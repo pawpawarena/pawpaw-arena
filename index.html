@@ -3,123 +3,146 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🐾 PawPaw Arena — @pawpaw.arena</title>
+  <title>🐾 PawPaw Arena — @pawpawarena</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root{
-      --bg:#fef6ee;--card:#fff;--arena:#1a1028;
-      --orange:#ff8c42;--pink:#ff6b9d;--purple:#a855f7;
-      --blue:#38bdf8;--green:#34d399;--yellow:#fbbf24;
-      --red:#f87171;--gold:#fbbf24;
-      --td:#2d1b4e;--tn:#4a3670;--tm:#8b7aa8;--tl:#c4b5dc;
-      --bs:rgba(168,85,247,.15);--bw:rgba(255,140,66,.25);
-      --ss:0 4px 20px rgba(45,27,78,.08);
-      --sm:0 8px 30px rgba(45,27,78,.12);
-      --sg:0 0 40px rgba(168,85,247,.2);
-      --sgold:0 0 50px rgba(251,191,36,.4);
-      --rs:10px;--rm:16px;--rl:24px;
+      --bg:#f8f4ef;
+      --bg-warm:#f3ece2;
+      --bg-cream:#faf7f2;
+      --card:#ffffff;
+      --card-hover:#fdfbf8;
+
+      --brown-deep:#3c2a1a;
+      --brown:#6b4c35;
+      --brown-medium:#8b6f56;
+      --brown-light:#a8917a;
+      --brown-soft:#c4b09c;
+      --brown-pale:#ddd0c2;
+      --brown-faint:#ebe3d9;
+
+      --beige:#d4c5b2;
+      --beige-light:#e8ddd0;
+      --beige-dark:#b8a48e;
+
+      --gold:#c9a84c;
+      --gold-light:#dfc06a;
+      --gold-dark:#a68832;
+
+      --white:#ffffff;
+      --off-white:#faf8f5;
+
+      --text-dark:#2c1e10;
+      --text:#4a3728;
+      --text-muted:#8b7b6b;
+      --text-light:#b5a595;
+      --text-faint:#d4c8bc;
+
+      --arena-bg:#1e1610;
+      --arena-inner:#2a1f16;
+
+      --border:rgba(107,76,53,.12);
+      --border-warm:rgba(196,176,156,.4);
+
+      --shadow-sm:0 2px 12px rgba(60,42,26,.06);
+      --shadow-md:0 6px 24px rgba(60,42,26,.1);
+      --shadow-lg:0 12px 40px rgba(60,42,26,.14);
+      --shadow-gold:0 0 40px rgba(201,168,76,.3);
+
+      --rs:8px;--rm:14px;--rl:20px;
       --ease:cubic-bezier(.16,1,.3,1)
     }
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--tn);
+    body{background:var(--bg);color:var(--text);
       font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden}
 
-    /* BG */
+    /* ── SUBTLE BACKGROUND ─────────────────── */
     .bg-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-    .bg-blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.18;
-      animation:blobF 25s ease-in-out infinite}
-    .bg-blob:nth-child(1){width:500px;height:500px;background:var(--orange);
-      top:-100px;left:-80px;animation-duration:28s}
-    .bg-blob:nth-child(2){width:400px;height:400px;background:var(--pink);
-      bottom:-80px;right:-60px;animation-duration:32s;animation-delay:-8s}
-    .bg-blob:nth-child(3){width:350px;height:350px;background:var(--purple);
-      top:40%;left:60%;animation-duration:24s;animation-delay:-4s}
-    .paw-fl{position:absolute;font-size:2rem;opacity:.055;
-      animation:pawUp 22s linear infinite}
-    @keyframes blobF{
-      0%,100%{transform:translate(0,0) scale(1)}
-      33%{transform:translate(50px,-70px) scale(1.1)}
-      66%{transform:translate(-40px,50px) scale(.95)}}
-    @keyframes pawUp{
-      0%{transform:translateY(110vh) rotate(0);opacity:0}
-      10%{opacity:.055}90%{opacity:.055}
-      100%{transform:translateY(-10vh) rotate(360deg);opacity:0}}
+    .bg-grad{position:absolute;border-radius:50%;filter:blur(120px);opacity:.12}
+    .bg-grad:nth-child(1){width:600px;height:600px;background:var(--beige);top:-150px;left:-100px}
+    .bg-grad:nth-child(2){width:500px;height:500px;background:var(--brown-pale);bottom:-120px;right:-80px}
+    .bg-grad:nth-child(3){width:400px;height:400px;background:var(--gold-light);top:50%;left:50%;transform:translate(-50%,-50%);opacity:.06}
 
-    /* LAYOUT */
-    .app{position:relative;z-index:1;max-width:1000px;
-      margin:0 auto;padding:0 16px 60px}
+    /* ── LAYOUT ─────────────────────────────── */
+    .app{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 20px 60px}
 
-    /* HEADER */
-    .header{text-align:center;padding:32px 20px 14px}
+    /* ── HEADER ─────────────────────────────── */
+    .header{text-align:center;padding:40px 20px 16px}
     .h-badge{display:inline-flex;align-items:center;gap:6px;
-      background:linear-gradient(135deg,var(--orange),var(--pink));
-      color:#fff;font-weight:800;font-size:.68rem;padding:5px 16px;
-      border-radius:20px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-    .h-title{font-family:'Lilita One',cursive;
-      font-size:clamp(2rem,6vw,3.4rem);color:var(--td);line-height:1.15}
-    .paw-i{display:inline-block;animation:pawW 2s ease-in-out infinite}
-    @keyframes pawW{
-      0%,100%{transform:rotate(0)}
-      25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
-    .h-sub{font-size:clamp(.82rem,2vw,.95rem);color:var(--tm);margin-top:5px;font-weight:600}
-    .h-ig{display:inline-flex;align-items:center;gap:6px;margin-top:10px;
-      background:var(--card);border:1px solid var(--bs);border-radius:var(--rs);
-      padding:7px 18px;font-size:.82rem;font-weight:700;color:var(--purple);
-      box-shadow:var(--ss);text-decoration:none;transition:all .2s var(--ease)}
-    .h-ig:hover{transform:translateY(-2px);box-shadow:var(--sm)}
-    .ig-gr{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
-    .h-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px}
-    .h-pill{background:var(--card);border:1px solid var(--bs);border-radius:40px;
-      padding:5px 14px;font-size:.76rem;font-weight:700;color:var(--tm);
-      box-shadow:var(--ss);display:flex;align-items:center;gap:5px}
-    .h-pill .v{color:var(--purple);font-family:'Fredoka'}
+      background:var(--brown);color:var(--beige-light);
+      font-family:'Nunito';font-weight:800;font-size:.62rem;
+      padding:5px 18px;border-radius:20px;letter-spacing:3px;
+      text-transform:uppercase;margin-bottom:14px}
+    .h-title{font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,6vw,3.2rem);color:var(--brown-deep);
+      line-height:1.15;font-weight:700;letter-spacing:-.5px}
+    .h-title .accent{color:var(--gold-dark)}
+    .h-sub{font-size:clamp(.82rem,2vw,.92rem);color:var(--text-muted);
+      margin-top:6px;font-weight:600;font-style:italic;
+      font-family:'Cormorant Garamond',serif;font-size:1.05rem;letter-spacing:.5px}
+    .h-ig{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+      background:var(--card);border:1px solid var(--border-warm);
+      border-radius:var(--rs);padding:8px 20px;font-size:.82rem;
+      font-weight:700;color:var(--brown);box-shadow:var(--shadow-sm);
+      text-decoration:none;transition:all .25s var(--ease)}
+    .h-ig:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);
+      border-color:var(--gold)}
+    .h-ig .ig-at{color:var(--gold-dark);font-weight:800}
+    .h-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+    .h-pill{background:var(--card);border:1px solid var(--border);
+      border-radius:40px;padding:5px 16px;font-size:.74rem;font-weight:700;
+      color:var(--text-muted);box-shadow:var(--shadow-sm);
+      display:flex;align-items:center;gap:5px}
+    .h-pill .v{color:var(--brown);font-family:'Fredoka'}
 
-    /* STATUS */
+    /* ── DIVIDER ────────────────────────────── */
+    .divider{width:60px;height:2px;background:var(--brown-pale);
+      margin:16px auto;border-radius:2px}
+
+    /* ── STATUS BANNER ──────────────────────── */
     .s-banner{display:flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 24px;border-radius:var(--rm);margin:14px auto;max-width:700px;
-      font-weight:700;font-size:.88rem;transition:all .4s var(--ease);text-align:center}
-    .s-banner.waiting{background:linear-gradient(135deg,#fef3c7,#fde68a);
-      color:#92400e;border:1px solid rgba(251,191,36,.4)}
-    .s-banner.live{background:linear-gradient(135deg,#dcfce7,#bbf7d0);
-      color:#166534;border:1px solid rgba(34,197,94,.4);
-      animation:livePulse 2s ease-in-out infinite}
-    .s-banner.finished{background:linear-gradient(135deg,#fce7f3,#fbcfe8);
-      color:#9d174d;border:1px solid rgba(236,72,153,.4)}
+      padding:12px 24px;border-radius:var(--rm);margin:14px auto;max-width:600px;
+      font-weight:700;font-size:.85rem;transition:all .4s var(--ease);text-align:center}
+    .s-banner.waiting{background:var(--beige-light);color:var(--brown);
+      border:1px solid var(--brown-pale)}
+    .s-banner.live{background:#e8f0e4;color:#3a5a2c;
+      border:1px solid rgba(74,120,56,.25);animation:livePulse 2s ease-in-out infinite}
+    .s-banner.finished{background:#fae8e0;color:#7a3b2e;
+      border:1px solid rgba(180,90,60,.2)}
     @keyframes livePulse{
-      0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.3)}
-      50%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
-    .s-dot{width:10px;height:10px;border-radius:50%;animation:dotBlink 1s ease-in-out infinite}
-    .s-banner.waiting .s-dot{background:#f59e0b}
-    .s-banner.live    .s-dot{background:#22c55e}
-    .s-banner.finished .s-dot{background:#ec4899;animation:none}
+      0%,100%{box-shadow:0 0 0 0 rgba(74,120,56,.2)}
+      50%{box-shadow:0 0 0 8px rgba(74,120,56,0)}}
+    .s-dot{width:8px;height:8px;border-radius:50%;animation:dotBlink 1s ease-in-out infinite}
+    .s-banner.waiting .s-dot{background:var(--brown-soft)}
+    .s-banner.live    .s-dot{background:#4a7838}
+    .s-banner.finished .s-dot{background:#b45a3c;animation:none}
     @keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.3}}
 
-    /* STATS */
+    /* ── STATS ──────────────────────────────── */
     .stats-strip{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-    .stat-p{background:var(--card);border:1px solid var(--bs);border-radius:40px;
-      padding:8px 18px;display:flex;align-items:center;gap:8px;
-      box-shadow:var(--ss);transition:transform .2s var(--ease)}
+    .stat-p{background:var(--card);border:1px solid var(--border);
+      border-radius:40px;padding:8px 20px;display:flex;align-items:center;gap:10px;
+      box-shadow:var(--shadow-sm);transition:transform .2s var(--ease)}
     .stat-p:hover{transform:translateY(-2px)}
-    .stat-p .si{font-size:1.1rem}
-    .stat-p .sl{font-size:.68rem;color:var(--tm);font-weight:700;
-      text-transform:uppercase;letter-spacing:1px}
-    .stat-p .sv{font-family:'Fredoka';font-weight:700;font-size:1.1rem;color:var(--td)}
+    .stat-p .sl{font-size:.65rem;color:var(--text-muted);font-weight:700;
+      text-transform:uppercase;letter-spacing:1.5px}
+    .stat-p .sv{font-family:'Fredoka';font-weight:700;font-size:1.05rem;color:var(--brown-deep)}
 
-    /* ARENA */
-    .arena-wrap{margin:16px 0}
+    /* ── ARENA ──────────────────────────────── */
+    .arena-wrap{margin:20px 0}
     .arena-frame{position:relative;border-radius:var(--rl);overflow:hidden;
-      box-shadow:var(--sm),var(--sg);border:3px solid rgba(168,85,247,.2)}
+      box-shadow:var(--shadow-lg);border:2px solid var(--brown-pale)}
     .arena-frame canvas{display:block;width:100%;height:auto}
 
-    /* WINNER OVERLAY */
+    /* ── WINNER OVERLAY ─────────────────────── */
     .w-ov{display:none;position:absolute;inset:0;z-index:20;
-      flex-direction:column;align-items:center;justify-content:center;gap:12px;
-      background:radial-gradient(ellipse at center,rgba(26,16,40,.95),rgba(10,5,20,.99));
+      flex-direction:column;align-items:center;justify-content:center;gap:14px;
+      background:radial-gradient(ellipse at center,rgba(30,22,16,.95),rgba(14,10,6,.98));
       animation:winFI .8s var(--ease)}
     .w-ov.show{display:flex}
     @keyframes winFI{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
@@ -128,313 +151,243 @@
     @keyframes confDrop{
       0%{transform:translateY(-20px) rotate(0);opacity:1}
       100%{transform:translateY(620px) rotate(720deg);opacity:0}}
-    .w-trophy{font-size:3rem;animation:troph 2s ease-in-out infinite;z-index:1}
-    @keyframes troph{
-      0%,100%{transform:rotate(0) scale(1)}
-      25%{transform:rotate(-8deg) scale(1.05)}
-      75%{transform:rotate(8deg) scale(1.05)}}
-    .w-avr{width:150px;height:150px;border-radius:50%;padding:4px;
-      background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);
-      box-shadow:var(--sgold);animation:avPulse 2s ease-in-out infinite;z-index:1}
+    .w-crown{font-size:2.5rem;z-index:1;animation:crownFloat 3s ease-in-out infinite}
+    @keyframes crownFloat{
+      0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .w-avr{width:130px;height:130px;border-radius:50%;padding:4px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+      box-shadow:var(--shadow-gold);z-index:1;
+      animation:avPulse 2.5s ease-in-out infinite}
     @keyframes avPulse{
-      0%,100%{box-shadow:0 0 30px rgba(251,191,36,.4)}
-      50%{box-shadow:0 0 80px rgba(251,191,36,.9)}}
-    .w-avr img{width:100%;height:100%;border-radius:50%;
-      object-fit:cover;border:4px solid #1a1028}
-    .w-lbl{font-family:'Lilita One';font-size:1rem;color:var(--gold);
-      text-transform:uppercase;letter-spacing:3px;z-index:1;text-align:center}
-    .w-nm{font-family:'Lilita One';font-size:1.6rem;color:#fff;z-index:1;text-align:center}
-    .w-hd{font-size:.9rem;color:var(--blue);z-index:1;font-weight:700}
-    .w-sub{font-size:.85rem;color:var(--tl);text-align:center;
-      max-width:340px;line-height:1.6;z-index:1}
-    .w-btns{display:flex;gap:8px;z-index:1;flex-wrap:wrap;justify-content:center}
-    .w-btn{padding:10px 22px;border:none;border-radius:var(--rs);
-      font-family:'Fredoka';font-weight:700;font-size:.9rem;
-      cursor:pointer;transition:all .2s var(--ease)}
+      0%,100%{box-shadow:0 0 20px rgba(201,168,76,.3)}
+      50%{box-shadow:0 0 50px rgba(201,168,76,.6)}}
+    .w-avr canvas{width:100%;height:100%;border-radius:50%;border:3px solid var(--arena-bg)}
+    .w-lbl{font-family:'Cormorant Garamond',serif;font-size:.9rem;
+      color:var(--gold-light);text-transform:uppercase;letter-spacing:4px;z-index:1;
+      text-align:center;font-style:italic}
+    .w-nm{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--white);
+      z-index:1;text-align:center;letter-spacing:1px}
+    .w-hd{font-size:.85rem;color:var(--gold-light);z-index:1;font-weight:600;
+      font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:.5px}
+    .w-sub{font-size:.8rem;color:var(--brown-soft);text-align:center;
+      max-width:320px;line-height:1.7;z-index:1;
+      font-family:'Cormorant Garamond',serif;font-size:.9rem}
+    .w-btns{display:flex;gap:10px;z-index:1;flex-wrap:wrap;justify-content:center;margin-top:4px}
+    .w-btn{padding:10px 24px;border:none;border-radius:var(--rs);
+      font-family:'Fredoka';font-weight:700;font-size:.85rem;
+      cursor:pointer;transition:all .25s var(--ease);letter-spacing:.5px}
     .w-btn:hover{transform:scale(1.05)}
-    .w-btn.save{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff}
-    .w-btn.newwk{background:linear-gradient(135deg,var(--purple),#7c3aed);color:#fff}
+    .w-btn.save{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--white)}
+    .w-btn.reset{background:var(--brown);color:var(--beige-light)}
 
-    /* ROSTER STRIP */
+    /* ── SECTION HEADERS ───────────────────── */
     .sec-hd{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-    .sec-hd h2{font-family:'Fredoka';font-weight:700;font-size:1.05rem;color:var(--td)}
-    .roster-wrap{background:var(--card);border:1px solid var(--bs);
-      border-radius:var(--rm);box-shadow:var(--ss);overflow:hidden}
-    .roster-scroll{display:flex;gap:8px;overflow-x:auto;padding:12px;
-      scrollbar-width:thin;scrollbar-color:var(--purple) transparent}
-    .roster-scroll::-webkit-scrollbar{height:4px}
-    .roster-scroll::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px}
-    .r-card{flex-shrink:0;width:64px;text-align:center;
-      transition:transform .2s var(--ease)}
-    .r-card:hover{transform:translateY(-3px)}
-    .r-av{width:46px;height:46px;border-radius:50%;margin:0 auto 4px;
-      overflow:hidden;border:2px solid var(--bs);box-shadow:var(--ss);
-      background:linear-gradient(135deg,#e9d5ff,#fce7f3)}
-    .r-av img,.r-av canvas{width:100%;height:100%;object-fit:cover;display:block}
-    .r-card.elim .r-av{filter:grayscale(.9);opacity:.25}
-    .r-card.elim .r-un{opacity:.3;text-decoration:line-through}
-    .r-un{font-size:.58rem;font-weight:700;color:var(--td);
-      overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.2}
-    .roster-count{padding:8px 14px;font-size:.72rem;color:var(--tm);
-      border-top:1px solid var(--bs);font-weight:600}
+    .sec-hd h2{font-family:'Playfair Display',serif;font-weight:600;
+      font-size:1.1rem;color:var(--brown-deep);letter-spacing:.3px}
 
-    /* ADMIN */
-    .a-login{margin:14px 0;text-align:center}
-    .a-login-btn{background:none;border:1px solid var(--bs);border-radius:var(--rs);
-      padding:8px 20px;font-family:'Nunito';font-weight:700;font-size:.76rem;
-      color:var(--tm);cursor:pointer;transition:all .2s}
-    .a-login-btn:hover{border-color:var(--purple);color:var(--purple)}
-    .a-panel{display:none;margin:14px 0;background:var(--card);
-      border:2px dashed var(--purple);border-radius:var(--rl);
-      padding:20px;box-shadow:var(--ss)}
+    /* ── ADMIN ──────────────────────────────── */
+    .a-login{margin:16px 0;text-align:center}
+    .a-login-btn{background:none;border:1px solid var(--border-warm);
+      border-radius:var(--rs);padding:8px 22px;font-family:'Nunito';
+      font-weight:700;font-size:.74rem;color:var(--text-muted);
+      cursor:pointer;transition:all .2s;letter-spacing:1px;text-transform:uppercase}
+    .a-login-btn:hover{border-color:var(--brown);color:var(--brown)}
+    .a-panel{display:none;margin:16px 0;background:var(--card);
+      border:1px solid var(--border-warm);border-radius:var(--rl);
+      padding:24px;box-shadow:var(--shadow-sm)}
     .a-panel.show{display:block}
-    .a-title{font-family:'Fredoka';font-weight:700;font-size:1rem;
-      color:var(--purple);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-    .a-ctrls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+    .a-title{font-family:'Playfair Display',serif;font-weight:600;
+      font-size:1rem;color:var(--brown);margin-bottom:16px;
+      display:flex;align-items:center;gap:8px;letter-spacing:.3px}
+    .a-ctrls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
     .a-btn{padding:10px 22px;border:none;border-radius:var(--rs);
-      font-family:'Fredoka';font-weight:600;font-size:.86rem;
-      cursor:pointer;transition:all .2s var(--ease)}
-    .a-btn:hover{transform:translateY(-2px);box-shadow:var(--ss)}
-    .a-btn.start{background:linear-gradient(135deg,#34d399,#22c55e);color:#fff}
-    .a-btn.pause{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff}
-    .a-btn.reset{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff}
-    .a-btn.speed{background:var(--bg);border:1px solid var(--bs);
-      color:var(--tn);min-width:50px}
-    .a-btn.speed.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+      font-family:'Fredoka';font-weight:600;font-size:.84rem;
+      cursor:pointer;transition:all .25s var(--ease);letter-spacing:.3px}
+    .a-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+    .a-btn.start{background:var(--brown);color:var(--beige-light)}
+    .a-btn.start:hover{background:var(--brown-deep)}
+    .a-btn.pause{background:var(--beige-dark);color:var(--white)}
+    .a-btn.reset{background:var(--brown-light);color:var(--white)}
+    .a-btn.speed{background:var(--bg-warm);border:1px solid var(--border);
+      color:var(--text);min-width:50px}
+    .a-btn.speed.active{background:var(--brown);color:var(--beige-light);
+      border-color:var(--brown)}
+    .a-btn.wipe{background:#c0392b;color:#fff;font-size:.76rem;padding:8px 14px}
 
-    /* INPUT SECTION */
-    .inp-sec{border-top:1px solid var(--bs);padding-top:16px}
-    .inp-sec h4{font-family:'Fredoka';font-size:.92rem;color:var(--pink);
-      margin-bottom:4px;display:flex;align-items:center;gap:6px}
-    .inp-sec > p{font-size:.75rem;color:var(--tm);margin-bottom:12px;line-height:1.5}
+    /* ── INPUT SECTION ──────────────────────── */
+    .inp-sec{border-top:1px solid var(--border);padding-top:18px}
+    .inp-sec h4{font-family:'Playfair Display',serif;font-size:.95rem;
+      color:var(--brown);margin-bottom:4px;font-weight:600}
+    .inp-sec>p{font-size:.75rem;color:var(--text-muted);margin-bottom:12px;line-height:1.5}
     .inp-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
-    .inp-tab{padding:8px 14px;border:1px solid var(--bs);border-radius:var(--rs);
-      background:var(--bg);font-family:'Fredoka';font-weight:600;font-size:.76rem;
-      color:var(--tm);cursor:pointer;transition:all .2s var(--ease)}
-    .inp-tab:hover{border-color:var(--purple);color:var(--purple)}
-    .inp-tab.active{background:var(--purple);color:#fff;border-color:var(--purple)}
-    .tab-c{display:none}
-    .tab-c.active{display:block}
-    .inp-ta{width:100%;min-height:90px;padding:10px 14px;border-radius:var(--rs);
-      border:1px solid var(--bs);background:var(--bg);color:var(--tn);
-      font-family:'Nunito';font-size:.82rem;resize:vertical;line-height:1.6;
-      transition:border-color .2s}
-    .inp-ta:focus{outline:none;border-color:var(--purple);
-      box-shadow:0 0 12px rgba(168,85,247,.15)}
-    .file-drop{border:2px dashed var(--bs);border-radius:var(--rm);
-      padding:24px;text-align:center;cursor:pointer;
-      transition:all .3s var(--ease);background:var(--bg)}
-    .file-drop:hover,.file-drop.drag{border-color:var(--purple);
-      background:rgba(168,85,247,.04)}
-    .fd-icon{font-size:2rem;margin-bottom:6px}
-    .fd-txt{font-size:.82rem;color:var(--tm);font-weight:600}
-    .fd-sub{font-size:.7rem;color:var(--tl);margin-top:3px}
+    .inp-tab{padding:8px 16px;border:1px solid var(--border);border-radius:var(--rs);
+      background:var(--bg-warm);font-family:'Fredoka';font-weight:600;font-size:.76rem;
+      color:var(--text-muted);cursor:pointer;transition:all .2s var(--ease)}
+    .inp-tab:hover{border-color:var(--brown-light);color:var(--brown)}
+    .inp-tab.active{background:var(--brown);color:var(--beige-light);border-color:var(--brown)}
+    .tab-c{display:none}.tab-c.active{display:block}
+    .inp-ta{width:100%;min-height:90px;padding:12px 14px;border-radius:var(--rs);
+      border:1px solid var(--border);background:var(--bg-cream);color:var(--text);
+      font-family:'Nunito';font-size:.82rem;resize:vertical;line-height:1.6;transition:border-color .2s}
+    .inp-ta:focus{outline:none;border-color:var(--brown-light);
+      box-shadow:0 0 0 3px rgba(107,76,53,.08)}
+    .file-drop{border:2px dashed var(--brown-pale);border-radius:var(--rm);
+      padding:28px 20px;text-align:center;cursor:pointer;
+      transition:all .3s var(--ease);background:var(--bg-cream)}
+    .file-drop:hover,.file-drop.drag{border-color:var(--brown);background:rgba(107,76,53,.03)}
+    .fd-icon{font-size:1.6rem;margin-bottom:6px;opacity:.4}
+    .fd-txt{font-size:.82rem;color:var(--text-muted);font-weight:600}
+    .fd-sub{font-size:.7rem;color:var(--text-light);margin-top:3px}
     .file-drop input[type=file]{display:none}
-    .inp-acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
-    .btn-load{padding:10px 22px;
-      background:linear-gradient(135deg,var(--purple),#7c3aed);
-      border:none;border-radius:var(--rs);color:#fff;font-family:'Fredoka';
-      font-weight:700;font-size:.86rem;cursor:pointer;transition:all .2s var(--ease)}
-    .btn-load:hover{transform:translateY(-2px);
-      box-shadow:0 6px 20px rgba(168,85,247,.35)}
+    .inp-acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+    .btn-load{padding:10px 24px;background:var(--brown);
+      border:none;border-radius:var(--rs);color:var(--beige-light);
+      font-family:'Fredoka';font-weight:700;font-size:.84rem;
+      cursor:pointer;transition:all .25s var(--ease)}
+    .btn-load:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);background:var(--brown-deep)}
     .btn-load:disabled{opacity:.5;cursor:not-allowed;transform:none}
-    .btn-clr{padding:10px 16px;background:var(--bg);border:1px solid var(--bs);
-      border-radius:var(--rs);color:var(--tm);font-family:'Fredoka';
-      font-weight:600;font-size:.86rem;cursor:pointer;transition:all .2s}
-    .btn-clr:hover{border-color:var(--red);color:var(--red)}
-    .parsed-cnt{font-family:'Fredoka';font-weight:700;color:var(--purple);font-size:.82rem}
-    .ld-status{font-size:.75rem;color:var(--tm);margin-top:6px;line-height:1.6}
-    .ld-prog{width:100%;height:6px;background:rgba(168,85,247,.1);
+    .btn-clr{padding:10px 16px;background:var(--bg-warm);border:1px solid var(--border);
+      border-radius:var(--rs);color:var(--text-muted);font-family:'Fredoka';
+      font-weight:600;font-size:.84rem;cursor:pointer;transition:all .2s}
+    .btn-clr:hover{border-color:var(--brown-light);color:var(--brown)}
+    .parsed-cnt{font-family:'Fredoka';font-weight:700;color:var(--brown);font-size:.82rem}
+    .ld-status{font-size:.75rem;color:var(--text-muted);margin-top:8px;line-height:1.6}
+    .ld-prog{width:100%;height:5px;background:var(--brown-faint);
       border-radius:3px;margin-top:8px;overflow:hidden;display:none}
-    .ld-bar{height:100%;
-      background:linear-gradient(90deg,var(--purple),var(--pink));
+    .ld-bar{height:100%;background:linear-gradient(90deg,var(--brown),var(--gold));
       border-radius:3px;width:0%;transition:width .3s var(--ease)}
-    .parsed-prev{margin-top:8px;background:var(--bg);border:1px solid var(--bs);
+    .parsed-prev{margin-top:8px;background:var(--bg-cream);border:1px solid var(--border);
       border-radius:var(--rs);padding:10px;max-height:80px;overflow-y:auto;
-      font-size:.7rem;color:var(--tm);line-height:1.5;display:none}
+      font-size:.7rem;color:var(--text-muted);line-height:1.5;display:none;
+      scrollbar-width:thin;scrollbar-color:var(--brown-soft) transparent}
+    .a-settings{margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .a-field label{font-size:.7rem;font-weight:700;color:var(--text-muted);
+      text-transform:uppercase;letter-spacing:1px;margin-right:6px}
+    .a-field select{padding:7px 10px;border-radius:var(--rs);border:1px solid var(--border);
+      background:var(--bg-cream);color:var(--text);font-family:'Nunito'}
 
-    /* SCALING INFO BOX */
-    .scale-info{background:linear-gradient(135deg,rgba(168,85,247,.06),rgba(255,107,157,.04));
-      border:1px solid var(--bs);border-radius:var(--rm);padding:12px 16px;
-      margin-top:12px;font-size:.75rem;color:var(--tm);line-height:1.6}
-    .scale-info strong{color:var(--purple)}
+    /* ── HOF ────────────────────────────────── */
+    .hof-section{margin:36px 0}
+    .hof-empty{text-align:center;padding:32px;color:var(--text-muted);font-size:.88rem;
+      font-style:italic;background:var(--card);border:1px solid var(--border);
+      border-radius:var(--rm);font-family:'Cormorant Garamond',serif;font-size:1rem}
+    .hof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:14px}
+    .hof-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rm);
+      padding:20px 14px;text-align:center;box-shadow:var(--shadow-sm);
+      transition:transform .25s var(--ease),box-shadow .25s;position:relative;overflow:hidden}
+    .hof-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .hof-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark))}
+    .hof-av{width:68px;height:68px;border-radius:50%;margin:0 auto 10px;
+      border:2px solid var(--gold);box-shadow:0 0 16px rgba(201,168,76,.15);overflow:hidden}
+    .hof-av canvas{width:100%;height:100%;display:block}
+    .hof-nm{font-family:'Playfair Display',serif;font-weight:600;font-size:.92rem;color:var(--brown-deep)}
+    .hof-hd{font-size:.7rem;color:var(--text-muted);margin-bottom:2px;
+      font-family:'Cormorant Garamond',serif;font-style:italic}
+    .hof-wins{display:inline-flex;align-items:center;gap:4px;margin-top:8px;
+      background:linear-gradient(135deg,var(--beige-light),var(--beige));
+      color:var(--brown);font-family:'Fredoka';font-weight:700;font-size:.74rem;
+      padding:3px 14px;border-radius:20px}
+    .hof-wks{font-size:.63rem;color:var(--text-light);margin-top:3px;
+      font-family:'Cormorant Garamond',serif;font-style:italic}
 
-    /* SETTINGS */
-    .a-settings{margin-top:14px;
-      display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-    .a-field label{display:block;font-size:.7rem;font-weight:700;color:var(--tm);
-      text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-    .a-field input[type=range]{width:100%;accent-color:var(--purple)}
-    .a-field select{width:100%;padding:7px 10px;border-radius:var(--rs);
-      border:1px solid var(--bs);background:var(--bg);color:var(--tn);
-      font-family:'Nunito'}
-    .rv{float:right;font-family:'Fredoka';font-weight:600;
-      color:var(--purple);font-size:.82rem}
-
-    /* LEADERBOARD */
-    .lb-card{background:var(--card);border:1px solid var(--bs);
-      border-radius:var(--rm);box-shadow:var(--ss);overflow:hidden;margin:16px 0}
-    .lb-scroll{max-height:240px;overflow-y:auto;padding:6px 0;
-      scrollbar-width:thin;scrollbar-color:var(--purple) transparent}
-    .lb-row{display:flex;align-items:center;gap:10px;padding:7px 16px;
-      transition:background .15s;border-bottom:1px solid rgba(168,85,247,.04)}
-    .lb-row:last-child{border-bottom:none}
-    .lb-row:hover{background:rgba(168,85,247,.04)}
-    .lb-rank{font-family:'Fredoka';font-weight:700;font-size:.85rem;
-      width:30px;text-align:center;color:var(--tm)}
-    .lb-rank.r1{font-size:1.1rem}
-    .lb-rank.r2{color:#94a3b8}
-    .lb-rank.r3{color:#d97706}
-    .lb-av{width:36px;height:36px;border-radius:50%;overflow:hidden;flex-shrink:0;
-      border:2px solid var(--bs);
-      background:linear-gradient(135deg,#e9d5ff,#fce7f3)}
-    .lb-av img,.lb-av canvas{width:100%;height:100%;object-fit:cover;display:block}
-    .lb-inf{flex:1;min-width:0}
-    .lb-nm{font-size:.82rem;font-weight:700;color:var(--td);
-      white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .lb-hd{font-size:.68rem;color:var(--tm)}
-    .lb-sz{font-family:'Fredoka';font-weight:600;font-size:.75rem;
-      color:var(--purple);background:rgba(168,85,247,.08);
-      padding:2px 10px;border-radius:20px;white-space:nowrap}
-
-    /* FEED */
-    .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);
-      animation:dotBlink 1.5s ease-in-out infinite}
-    .feed-box{background:var(--card);border:1px solid var(--bs);
-      border-radius:var(--rm);max-height:140px;overflow-y:auto;
-      padding:10px 14px;box-shadow:var(--ss);
-      display:flex;flex-direction:column-reverse;margin:16px 0;
-      scrollbar-width:thin;scrollbar-color:var(--purple) transparent}
-    .f-entry{padding:5px 0;border-bottom:1px solid rgba(168,85,247,.06);
-      font-size:.8rem;display:flex;align-items:center;gap:6px;
-      animation:fSlide .3s var(--ease)}
-    @keyframes fSlide{
-      from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
-    .fw{color:var(--orange);font-weight:700}
-    .fl{color:var(--red);font-weight:600}
-    .ft{margin-left:auto;font-size:.68rem;color:var(--tm);font-family:'Fredoka'}
-
-    /* HOF */
-    .hof-section{margin:30px 0}
-    .hof-section .sec-hd h2{color:var(--orange)}
-    .hof-empty{text-align:center;padding:28px;color:var(--tm);font-size:.88rem;
-      font-style:italic;background:var(--card);border:1px solid var(--bs);
-      border-radius:var(--rm)}
-    .hof-grid{display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:14px}
-    .hof-card{background:var(--card);border:1px solid var(--bw);
-      border-radius:var(--rm);padding:18px 14px;text-align:center;
-      box-shadow:var(--ss);transition:transform .25s var(--ease);
-      position:relative;overflow:hidden}
-    .hof-card:hover{transform:translateY(-4px);box-shadow:var(--sm)}
-    .hof-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;
-      background:linear-gradient(90deg,var(--orange),var(--pink),var(--purple))}
-    .hof-av{width:72px;height:72px;border-radius:50%;margin:0 auto 8px;
-      border:3px solid var(--gold);box-shadow:0 0 20px rgba(251,191,36,.25);
-      overflow:hidden;background:linear-gradient(135deg,#e9d5ff,#fce7f3)}
-    .hof-av img,.hof-av canvas{width:100%;height:100%;object-fit:cover;display:block}
-    .hof-nm{font-family:'Fredoka';font-weight:700;font-size:.95rem;color:var(--td)}
-    .hof-hd{font-size:.7rem;color:var(--tm);margin-bottom:2px}
-    .hof-wins{display:inline-flex;align-items:center;gap:4px;margin-top:6px;
-      background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;
-      font-family:'Fredoka';font-weight:700;font-size:.76rem;
-      padding:3px 12px;border-radius:20px}
-    .hof-wks{font-size:.65rem;color:var(--tm);margin-top:3px}
-
-    /* HISTORY */
-    .hist-list{background:var(--card);border:1px solid var(--bs);
-      border-radius:var(--rm);box-shadow:var(--ss);overflow:hidden;margin-top:10px}
-    .hist-row{display:flex;align-items:center;gap:12px;padding:10px 16px;
-      border-bottom:1px solid rgba(168,85,247,.06);transition:background .15s}
+    /* ── HISTORY ────────────────────────────── */
+    .hist-list{background:var(--card);border:1px solid var(--border);
+      border-radius:var(--rm);box-shadow:var(--shadow-sm);overflow:hidden;margin-top:10px}
+    .hist-row{display:flex;align-items:center;gap:12px;padding:12px 18px;
+      border-bottom:1px solid var(--border);transition:background .15s}
     .hist-row:last-child{border-bottom:none}
-    .hist-row:hover{background:rgba(168,85,247,.03)}
-    .hist-wk{font-family:'Fredoka';font-weight:600;font-size:.76rem;
-      color:var(--purple);background:rgba(168,85,247,.08);
-      padding:3px 10px;border-radius:20px;white-space:nowrap}
-    .hist-av{width:32px;height:32px;border-radius:50%;
-      border:2px solid var(--gold);overflow:hidden;flex-shrink:0;
-      background:linear-gradient(135deg,#e9d5ff,#fce7f3)}
-    .hist-av img,.hist-av canvas{width:100%;height:100%;object-fit:cover;display:block}
-    .hist-info{flex:1}
-    .hist-nm{font-weight:700;font-size:.85rem;color:var(--td)}
-    .hist-hd{font-size:.72rem;color:var(--tm)}
-    .hist-dt{font-size:.7rem;color:var(--tm);white-space:nowrap}
+    .hist-row:hover{background:var(--bg-cream)}
+    .hist-wk{font-family:'Fredoka';font-weight:600;font-size:.74rem;
+      color:var(--brown);background:var(--beige-light);
+      padding:3px 12px;border-radius:20px;white-space:nowrap}
+    .hist-av{width:32px;height:32px;border-radius:50%;border:2px solid var(--gold);
+      overflow:hidden;flex-shrink:0}
+    .hist-av canvas{width:100%;height:100%;display:block}
+    .hist-nm{flex:1;font-weight:700;font-size:.85rem;color:var(--brown-deep);
+      font-family:'Playfair Display',serif}
+    .hist-hd{font-size:.72rem;color:var(--text-muted);font-family:'Cormorant Garamond',serif;font-style:italic}
+    .hist-dt{font-size:.7rem;color:var(--text-light);white-space:nowrap;
+      font-family:'Cormorant Garamond',serif}
 
-    /* FOLLOW CTA */
-    .follow-cta{margin:24px 0;text-align:center;background:var(--card);
-      border:1px solid var(--bw);border-radius:var(--rl);
-      padding:28px 20px;box-shadow:var(--ss);position:relative;overflow:hidden}
-    .follow-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;
-      background:linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045)}
-    .follow-cta h3{font-family:'Lilita One';font-size:1.3rem;color:var(--td);margin-bottom:6px}
-    .follow-cta p{font-size:.85rem;color:var(--tm);margin-bottom:14px;
-      max-width:420px;margin-left:auto;margin-right:auto;line-height:1.6}
-    .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
-      background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
-      color:#fff;border:none;border-radius:var(--rs);font-family:'Fredoka';
-      font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none;
-      transition:all .2s var(--ease)}
-    .cta-btn:hover{transform:translateY(-2px);
-      box-shadow:0 8px 24px rgba(253,29,29,.3)}
-    .cta-pets{font-size:1.6rem;margin-top:10px;opacity:.3}
+    /* ── FOLLOW CTA ─────────────────────────── */
+    .follow-cta{margin:30px 0;text-align:center;background:var(--card);
+      border:1px solid var(--border-warm);border-radius:var(--rl);
+      padding:32px 24px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+    .follow-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--brown-pale),var(--gold),var(--brown-pale))}
+    .follow-cta h3{font-family:'Playfair Display',serif;font-size:1.3rem;
+      color:var(--brown-deep);margin-bottom:8px;font-weight:600}
+    .follow-cta p{font-size:.88rem;color:var(--text-muted);margin-bottom:16px;
+      max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7;
+      font-family:'Cormorant Garamond',serif;font-size:1rem}
+    .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 30px;
+      background:var(--brown);color:var(--beige-light);border:none;
+      border-radius:var(--rs);font-family:'Fredoka';font-weight:700;
+      font-size:.92rem;cursor:pointer;text-decoration:none;
+      transition:all .25s var(--ease);letter-spacing:.5px}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);background:var(--brown-deep)}
 
-    /* FOOTER */
-    .footer{text-align:center;padding:28px 20px;color:var(--tm);font-size:.73rem}
-    .footer-p{font-size:1.5rem;margin-bottom:6px;opacity:.3}
-    .footer a{color:var(--purple);text-decoration:none}
+    /* ── FOOTER ─────────────────────────────── */
+    .footer{text-align:center;padding:36px 20px;color:var(--text-light);font-size:.72rem;
+      font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:.5px}
+    .footer .f-line{width:40px;height:1px;background:var(--brown-pale);
+      margin:0 auto 10px;border-radius:1px}
+    .footer a{color:var(--brown-light);text-decoration:none;transition:color .2s}
+    .footer a:hover{color:var(--brown)}
 
     @media(max-width:600px){
       .stats-strip{gap:6px}.stat-p{padding:6px 12px}
       .hof-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
-      .a-ctrls{gap:6px}.a-btn{padding:8px 14px}}
+      .a-ctrls{gap:6px}.a-btn{padding:8px 14px}
+    }
   </style>
 </head>
 <body>
 
 <div class="bg-decor">
-  <div class="bg-blob"></div>
-  <div class="bg-blob"></div>
-  <div class="bg-blob"></div>
+  <div class="bg-grad"></div>
+  <div class="bg-grad"></div>
+  <div class="bg-grad"></div>
 </div>
 
 <div class="app">
 
   <!-- HEADER -->
   <header class="header">
-    <div class="h-badge">🐾 WEEKLY PET COMPETITION</div>
-    <h1 class="h-title"><span class="paw-i">🐾</span> PawPaw Arena</h1>
-    <p class="h-sub">
-      The cutest pet wins! Every participant in one arena 🐶🐱🐰
-    </p>
-    <a class="h-ig" href="https://instagram.com/pawpaw.arena"
-       target="_blank" rel="noopener">
-      📸 <span class="ig-gr">@pawpaw.arena</span>
+    <div class="h-badge">Weekly Competition</div>
+    <h1 class="h-title">
+      Paw<span class="accent">Paw</span> Arena
+    </h1>
+    <p class="h-sub">Where the cutest pet is crowned each week</p>
+    <a class="h-ig" href="https://instagram.com/pawpawarena" target="_blank" rel="noopener">
+      <span class="ig-at">@pawpawarena</span> on Instagram
     </a>
     <div class="h-meta">
-      <div class="h-pill">📅 <span class="v" id="wk-label">Week 1 — 2025</span></div>
-      <div class="h-pill">🐾 Participants: <span class="v" id="part-count">0</span></div>
-      <div class="h-pill">⚔️ Remaining: <span class="v" id="alive-count">0</span></div>
+      <div class="h-pill">
+        <span class="v" id="wk-label">Week 1 — 2025</span>
+      </div>
+      <div class="h-pill">
+        Competitors: <span class="v" id="comp-count">0</span>
+      </div>
     </div>
   </header>
+
+  <div class="divider"></div>
 
   <!-- STATUS -->
   <div class="s-banner waiting" id="s-banner">
     <div class="s-dot"></div>
-    <span id="s-text">Load participants in the admin panel to begin</span>
+    <span id="s-text">Preparing this week's arena</span>
   </div>
 
   <!-- STATS -->
   <div class="stats-strip">
-    <div class="stat-p"><span class="si">🐾</span>
-      <div><div class="sl">In Arena</div><div class="sv" id="s-alive">0</div></div></div>
-    <div class="stat-p"><span class="si">💨</span>
-      <div><div class="sl">Eliminated</div><div class="sv" id="s-elim">0</div></div></div>
-    <div class="stat-p"><span class="si">👑</span>
-      <div><div class="sl">Leading</div><div class="sv" id="s-big">—</div></div></div>
-    <div class="stat-p"><span class="si">💥</span>
-      <div><div class="sl">Collisions</div><div class="sv" id="s-coll">0</div></div></div>
-    <div class="stat-p"><span class="si">⏱️</span>
-      <div><div class="sl">Time</div><div class="sv" id="s-time">00:00</div></div></div>
+    <div class="stat-p"><div><div class="sl">Alive</div><div class="sv" id="s-alive">0</div></div></div>
+    <div class="stat-p"><div><div class="sl">Eliminated</div><div class="sv" id="s-elim">0</div></div></div>
+    <div class="stat-p"><div><div class="sl">Leading</div><div class="sv" id="s-big">—</div></div></div>
+    <div class="stat-p"><div><div class="sl">Collisions</div><div class="sv" id="s-coll">0</div></div></div>
+    <div class="stat-p"><div><div class="sl">Time</div><div class="sv" id="s-time">00:00</div></div></div>
   </div>
 
   <!-- ARENA -->
@@ -442,1247 +395,403 @@
     <div class="arena-frame">
       <canvas id="arena"></canvas>
 
-      <!-- WINNER OVERLAY -->
-      <div class="w-ov" id="w-ov">
-        <div class="conf-box" id="conf-box"></div>
-        <div class="w-trophy">🏆</div>
-        <div class="w-avr"><img id="w-av" src="" alt="Champion"/></div>
-        <div class="w-lbl">✨ CUTEST PAWPAW OF THE WEEK ✨</div>
-        <div class="w-nm" id="w-nm">—</div>
-        <div class="w-hd" id="w-hd">@username</div>
-        <div class="w-sub" id="w-sub">
-          Congratulations! 🎉
-        </div>
+      <div class="w-ov" id="champ-ov">
+        <div class="conf-box" id="champ-conf"></div>
+        <div class="w-crown">👑</div>
+        <div class="w-avr"><canvas id="champ-av-canvas" width="122" height="122"></canvas></div>
+        <div class="w-lbl">Cutest PawPaw of the Week</div>
+        <div class="w-nm" id="champ-nm">—</div>
+        <div class="w-hd" id="champ-hd">@username</div>
+        <div class="w-sub" id="champ-sub">Champion of this week's arena</div>
         <div class="w-btns">
-          <button class="w-btn save" id="btn-save">📸 Save Result</button>
-          <button class="w-btn newwk" id="btn-newwk">↺ New Week</button>
+          <button class="w-btn save" id="btn-save">Save Result</button>
+          <button class="w-btn reset" id="btn-final-reset">New Week</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- PARTICIPANT ROSTER -->
-  <section>
-    <div class="sec-hd">
-      <h2>🐾 This Week's Participants</h2>
-    </div>
-    <div class="roster-wrap">
-      <div class="roster-scroll" id="roster">
-        <div style="color:var(--tm);font-size:.82rem;
-          padding:8px;font-style:italic">
-          Load participants in admin panel ↓
-        </div>
-      </div>
-      <div class="roster-count" id="roster-count"></div>
-    </div>
-  </section>
-
   <!-- ADMIN LOGIN -->
   <div class="a-login" id="a-login">
-    <button class="a-login-btn" id="btn-admin">🔐 Admin Access</button>
+    <button class="a-login-btn" id="btn-admin">Admin Access</button>
   </div>
 
   <!-- ADMIN PANEL -->
   <div class="a-panel" id="a-panel">
-    <div class="a-title">🔧 Admin Control Panel</div>
-
-    <!-- Controls -->
+    <div class="a-title">Control Panel</div>
     <div class="a-ctrls">
-      <button class="a-btn start" id="btn-start">▶ Start</button>
-      <button class="a-btn pause" id="btn-pause">⏸ Pause</button>
-      <button class="a-btn reset" id="btn-reset">↺ Reset</button>
-      <div style="width:1px;height:28px;background:var(--bs);margin:0 4px"></div>
+      <button class="a-btn start"  id="btn-start">Start</button>
+      <button class="a-btn pause"  id="btn-pause">Pause</button>
+      <button class="a-btn reset"  id="btn-reset">Reset</button>
+      <div style="width:1px;height:28px;background:var(--border);margin:0 4px"></div>
       <button class="a-btn speed active" data-speed="1">1×</button>
       <button class="a-btn speed"        data-speed="2">2×</button>
       <button class="a-btn speed"        data-speed="4">4×</button>
       <button class="a-btn speed"        data-speed="8">8×</button>
+      <div style="width:1px;height:28px;background:var(--border);margin:0 4px"></div>
+      <button class="a-btn wipe" id="btn-wipe">Reset to Week 1</button>
     </div>
 
-    <!-- Auto-scaling info -->
-    <div class="scale-info" id="scale-info">
-      ℹ️ Circle size and speed <strong>auto-adjust</strong> based on
-      participant count — works seamlessly with
-      <strong>10 to 2000+ participants</strong>.
-      Profile pictures fade in as circles grow larger.
-    </div>
-
-    <!-- Input Methods -->
-    <div class="inp-sec" style="margin-top:16px">
-      <h4>📋 Import Participants</h4>
-      <p>Paste usernames, upload your Instagram export file,
-         or paste from post comments. No limit on participant count.</p>
-
+    <div class="inp-sec">
+      <h4>Import Competitors</h4>
+      <p>Paste usernames, upload a file, or paste Instagram comments. Supports unlimited participants.</p>
       <div class="inp-tabs">
-        <div class="inp-tab active" data-tab="paste">📝 Paste</div>
-        <div class="inp-tab" data-tab="file">📁 File</div>
-        <div class="inp-tab" data-tab="comments">💬 Comments</div>
+        <div class="inp-tab active" data-tab="paste">Paste</div>
+        <div class="inp-tab" data-tab="file">File Upload</div>
+        <div class="inp-tab" data-tab="comments">Comments</div>
       </div>
-
       <div class="tab-c active" id="tab-paste">
-        <textarea class="inp-ta" id="ta-paste" spellcheck="false"
-          placeholder="One per line or comma-separated — any format works!&#10;&#10;fluffydog_max&#10;whiskers_the_cat&#10;@bunnylove_official, mochi.thecat"></textarea>
+        <textarea class="inp-ta" id="ta-paste" spellcheck="false" placeholder="One username per line, or comma-separated..."></textarea>
       </div>
-
       <div class="tab-c" id="tab-file">
         <div class="file-drop" id="file-drop">
-          <div class="fd-icon">📁</div>
+          <div class="fd-icon">↑</div>
           <div class="fd-txt">Drop file here or click to browse</div>
-          <div class="fd-sub">
-            Instagram export (followers_1.json) · .txt · .csv
-          </div>
+          <div class="fd-sub">Instagram export (.json) / text (.txt) / CSV (.csv)</div>
           <input type="file" id="file-input" accept=".json,.txt,.csv"/>
         </div>
       </div>
-
       <div class="tab-c" id="tab-comments">
-        <p style="font-size:.76rem;color:var(--tm);margin-bottom:8px;line-height:1.5">
-          Copy your entire Instagram comment section and paste below.
-          Every @mention is extracted automatically.
-        </p>
-        <textarea class="inp-ta" id="ta-comments" spellcheck="false"
-          placeholder="Paste all comments here…&#10;&#10;@fluffydog_max entering my dog! 🐶&#10;@whiskers_uk can we join? 🐱&#10;sign up @bunnylove.official!!"></textarea>
+        <textarea class="inp-ta" id="ta-comments" spellcheck="false" placeholder="Paste all Instagram comments here — every @mention is extracted automatically"></textarea>
       </div>
-
       <div class="parsed-prev" id="parsed-prev"></div>
-
       <div class="inp-acts">
-        <button class="btn-load" id="btn-load">🐾 Load Participants</button>
-        <button class="btn-clr"  id="btn-clr">🗑 Clear</button>
-        <span class="parsed-cnt" id="parsed-lbl">0 found</span>
+        <button class="btn-load" id="btn-load">Load Competitors</button>
+        <button class="btn-clr"  id="btn-clr">Clear</button>
+        <span class="parsed-cnt" id="parsed-lbl">0 usernames</span>
       </div>
-      <div class="ld-status" id="ld-status">
-        Import usernames then click "Load Participants" to fetch profile pictures.
-      </div>
-      <div class="ld-prog" id="ld-prog">
-        <div class="ld-bar" id="ld-bar"></div>
-      </div>
+      <div class="ld-status" id="ld-status"></div>
+      <div class="ld-prog" id="ld-prog"><div class="ld-bar" id="ld-bar"></div></div>
     </div>
-
-    <!-- Settings -->
     <div class="a-settings">
       <div class="a-field">
-        <label>Tie-break</label>
-        <select id="set-tb">
-          <option value="speed">Faster wins</option>
-          <option value="random">Random</option>
-          <option value="older">Older first</option>
-        </select>
-      </div>
-      <div class="a-field">
-        <label>Base Speed <span class="rv" id="rv-spd">1.0</span></label>
-        <input type="range" id="set-spd" min=".5" max="3" step=".1" value="1"/>
+        <label>Tie-break: <select id="set-tb"><option value="speed">Faster wins</option><option value="random">Random</option></select></label>
       </div>
     </div>
   </div>
 
-  <!-- LEADERBOARD -->
-  <section>
-    <div class="sec-hd"><h2>📊 Live Standings</h2></div>
-    <div class="lb-card">
-      <div class="lb-scroll" id="lb-body">
-        <div style="padding:16px;text-align:center;
-          color:var(--tm);font-size:.82rem;font-style:italic">
-          Standings appear during competition
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIVE FEED -->
-  <section>
-    <div class="sec-hd"><div class="live-dot"></div><h2>Live Feed</h2></div>
-    <div class="feed-box" id="feed-box">
-      <div style="color:var(--tm);font-size:.8rem;font-style:italic">
-        Events appear during competition…
-      </div>
-    </div>
-  </section>
-
-  <!-- HALL OF FAME -->
+  <!-- HOF -->
   <section class="hof-section">
-    <div class="sec-hd"><h2>🏛️ Hall of Fame</h2></div>
-    <p style="font-size:.78rem;color:var(--tm);margin-bottom:12px">
-      Legendary PawPaws who won the arena more than once
-    </p>
-    <div id="hof-empty" class="hof-empty">
-      No repeat champions yet — the Hall of Fame awaits! 🐾
-    </div>
+    <div class="sec-hd"><h2>Hall of Fame</h2></div>
+    <div id="hof-empty" class="hof-empty">No repeat champions yet</div>
     <div class="hof-grid" id="hof-grid" style="display:none"></div>
   </section>
 
   <!-- HISTORY -->
   <section>
-    <div class="sec-hd"><h2>📜 Past Champions</h2></div>
+    <div class="sec-hd"><h2>Past Champions</h2></div>
     <div class="hist-list" id="hist-list">
-      <div class="hof-empty" id="hist-empty">
-        No competitions yet 🐾
-      </div>
+      <div class="hof-empty" id="hist-empty">No competitions yet</div>
     </div>
   </section>
 
   <!-- FOLLOW CTA -->
   <section class="follow-cta">
-    <h3>🐾 Want Your Pet in the Arena?</h3>
-    <p>Follow <strong>@pawpaw.arena</strong> on Instagram or comment
-      your pet's @username on our weekly competition post to join!</p>
-    <a class="cta-btn" href="https://instagram.com/pawpaw.arena"
-       target="_blank" rel="noopener">
-      📸 Follow @pawpaw.arena
-    </a>
-    <div class="cta-pets">🐶 🐱 🐰 🐹 🐻 🦊</div>
+    <h3>Enter the Arena</h3>
+    <p>Follow <strong>@pawpawarena</strong> on Instagram and your pet is automatically entered every week. Or drop your pet's @username in our latest post.</p>
+    <a class="cta-btn" href="https://instagram.com/pawpawarena" target="_blank" rel="noopener">Follow @pawpawarena</a>
   </section>
 
   <footer class="footer">
-    <div class="footer-p">🐾 🐾 🐾</div>
-    PawPaw Arena © 2025 ·
-    <a href="https://instagram.com/pawpaw.arena" target="_blank">@pawpaw.arena</a>
+    <div class="f-line"></div>
+    PawPaw Arena &copy; 2025<br/>
+    <a href="https://instagram.com/pawpawarena" target="_blank">@pawpawarena</a>
   </footer>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════ -->
 <script>
 "use strict";
-
-/* ─────────────────────────────────────────────
-   DYNAMIC SCALING ENGINE
-   Automatically computes ideal circle size,
-   speed, and detail level for ANY participant count
-───────────────────────────────────────────── */
-function computeScale(n, W, H) {
-  // Available arena area
-  const arenaArea = (W - 64) * (H - 64);
-
-  // Target: circles fill ~22% of arena at start
-  const targetFill = 0.22;
-  const avgCircleArea = (arenaArea * targetFill) / n;
-
-  // Radius from area
-  let r = Math.sqrt(avgCircleArea / Math.PI);
-
-  // Hard clamp: never too big or tiny to render
-  r = Math.max(3, Math.min(r, 48));
-
-  // Speed scales inversely — more circles = slightly faster
-  // so small circles still look lively
-  const speedMult = Math.max(0.6, Math.min(2.5, 80 / (r * 3)));
-
-  // At what radius do we start showing profile pictures?
-  // Small circles: just colour + emoji
-  // Medium+ circles: fade in profile pic
-  const picThreshold = Math.max(14, r * 0.9);
-
-  // Trail length: shorter for tiny circles (less visual noise)
-  const trailAlpha = r < 8 ? 0.015 : r < 16 ? 0.025 : 0.04;
-
-  // Label: only show username text if circle is big enough
-  const labelThreshold = Math.max(18, r * 1.1);
-
-  return {
-    minR: Math.max(3,  r * 0.75),
-    maxR: Math.max(5,  r * 1.25),
-    speedMult,
-    picThreshold,
-    trailAlpha,
-    labelThreshold,
-  };
-}
-
-/* ─────────────────────────────────────────────
-   CONFIG
-───────────────────────────────────────────── */
-const CFG = {
-  W: 920, H: 580, PAD: 28,
-  TB: "speed",
-  BASE_SPD: 1.0,
-  LERP: 0.10,
-  SM: 1,
-  // These get set dynamically by computeScale:
-  minR: 16, maxR: 34,
-  speedMult: 1,
-  picThreshold: 20,
-  trailAlpha: 0.03,
-  labelThreshold: 22,
-};
-
-const PAL = [
-  {b:"#ff8c42",r:"#ffb088"},{b:"#ff6b9d",r:"#ff9ec0"},
-  {b:"#a855f7",r:"#c084fc"},{b:"#38bdf8",r:"#7dd3fc"},
-  {b:"#34d399",r:"#6ee7b7"},{b:"#fbbf24",r:"#fde68a"},
-  {b:"#f87171",r:"#fca5a5"},{b:"#fb7185",r:"#fda4af"},
-  {b:"#818cf8",r:"#a5b4fc"},{b:"#2dd4bf",r:"#5eead4"},
-  {b:"#f472b6",r:"#f9a8d4"},{b:"#a3e635",r:"#bef264"},
-  {b:"#c084fc",r:"#d8b4fe"},{b:"#fb923c",r:"#fdba74"},
-  {b:"#22d3ee",r:"#67e8f9"},{b:"#facc15",r:"#fef08a"},
-  {b:"#e879f9",r:"#f0abfc"},{b:"#4ade80",r:"#86efac"},
-  {b:"#f43f5e",r:"#fb7185"},{b:"#60a5fa",r:"#93c5fd"},
+const CFG={W:920,H:580,PAD:20,MIN_SPD:1.0,MAX_SPD:3.0,LERP:.12,TB:"speed",SM:1,LOD_RADIUS:14};
+const PAL=[
+  {b:"#8b6f56",r:"#a8917a"},{b:"#6b4c35",r:"#8b6f56"},
+  {b:"#c9a84c",r:"#dfc06a"},{b:"#a68832",r:"#c9a84c"},
+  {b:"#b8a48e",r:"#d4c5b2"},{b:"#7a5c42",r:"#9b7d62"},
+  {b:"#d4a574",r:"#e8c09a"},{b:"#5a3e28",r:"#7a5c42"},
+  {b:"#c4956a",r:"#dab892"},{b:"#917058",r:"#b09078"},
+  {b:"#a0784e",r:"#c09868"},{b:"#685040",r:"#887060"},
 ];
+const TAU=Math.PI*2,rand=(a,b)=>Math.random()*(b-a)+a,
+  dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),
+  lerp=(a,b,t)=>a+(b-a)*t,area=r=>Math.PI*r*r,
+  areaToR=a=>Math.sqrt(a/Math.PI),pad0=n=>String(n).padStart(2,"0");
 
-const EMOJIS = ["🐶","🐱","🐰","🐹","🦊","🐻","🐼","🦁","🐯","🐨"];
-
-/* ─────────────────────────────────────────────
-   UTILS
-───────────────────────────────────────────── */
-const TAU     = Math.PI * 2;
-const rand    = (a,b) => Math.random()*(b-a)+a;
-const dist    = (a,b) => Math.hypot(a.x-b.x, a.y-b.y);
-const lerp    = (a,b,t) => a+(b-a)*t;
-const clamp   = (v,lo,hi) => Math.max(lo, Math.min(hi,v));
-const area    = r => Math.PI*r*r;
-const areaToR = a => Math.sqrt(a/Math.PI);
-const pad0    = n => String(n).padStart(2,"0");
-const shuffle = a => { const s=[...a]; for(let i=s.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[s[i],s[j]]=[s[j],s[i]]} return s; };
-
-/* ─────────────────────────────────────────────
-   USERNAME PARSING
-───────────────────────────────────────────── */
-function parseUsernames(raw) {
-  const mentions = (raw.match(/@([a-zA-Z0-9._]{1,30})/g)||[])
-    .map(m => m.slice(1).toLowerCase());
-  const lines = raw.split(/[\n,;|\s]+/)
-    .map(l => l.trim().replace(/^@/,"").toLowerCase())
-    .filter(l => l.length>0 && l.length<=30 && /^[a-z0-9._]+$/i.test(l));
-  return [...new Set([...mentions,...lines])];
+function parseUsernames(raw){
+  const m=(raw.match(/@([a-zA-Z0-9._]{1,30})/g)||[]).map(x=>x.slice(1).toLowerCase());
+  const l=raw.split(/[\n,;|]+/).map(x=>x.trim().replace(/^@/,"").toLowerCase()).filter(x=>x.length>0&&x.length<=30&&/^[a-z0-9._]+$/i.test(x));
+  return[...new Set([...m,...l])];
 }
-
-function parseInstagramJSON(json) {
-  const out = [];
-  const walk = o => {
-    if (!o) return;
-    if (Array.isArray(o)) o.forEach(walk);
-    else if (typeof o === "object") {
-      if (o.string_list_data) o.string_list_data.forEach(d => { if(d.value) out.push(d.value.toLowerCase()); });
-      else if (o.username) out.push(o.username.toLowerCase());
-      else if (o.value && typeof o.value === "string") out.push(o.value.toLowerCase());
-      else Object.values(o).forEach(walk);
-    }
-  };
-  walk(json);
-  return [...new Set(out)];
+function parseInstaJSON(json){
+  const un=[];const ex=o=>{if(!o)return;if(Array.isArray(o))o.forEach(i=>{if(i.string_list_data)i.string_list_data.forEach(d=>{if(d.value)un.push(d.value.toLowerCase())});else if(typeof i==="string")un.push(i.toLowerCase());else if(i.username)un.push(i.username.toLowerCase());else if(i.value)un.push(i.value.toLowerCase())});else if(typeof o==="object")Object.values(o).forEach(v=>ex(v))};
+  ex(json);return[...new Set(un)];
 }
-
-/* ─────────────────────────────────────────────
-   AVATAR FETCHING
-───────────────────────────────────────────── */
-const AVATAR_SERVICES = [
-  u => `https://unavatar.io/instagram/${u}`,
-  u => `https://unavatar.io/${u}`,
-  u => `https://api.dicebear.com/7.x/thumbs/png?seed=${u}&size=128`,
-];
-
-function loadImg(url, ms = 10000) {
-  return new Promise((ok, no) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-
-    const timer = setTimeout(() => {
-      img.onload = null;
-      img.onerror = null;
-      img.src = "";
-      no(new Error("timeout"));
-    }, ms);
-
-    img.onload = () => {
-      clearTimeout(timer);
-      if (img.naturalWidth < 5) { no(new Error("tiny")); return; }
-      ok(img);
-    };
-
-    img.onerror = () => {
-      clearTimeout(timer);
-      no(new Error("error"));
-    };
-
-    img.src = url;
-  });
-}
-
-async function fetchAvatar(username) {
-  for (let i = 0; i < AVATAR_SERVICES.length; i++) {
-    try {
-      const img = await loadImg(AVATAR_SERVICES[i](username), 10000);
-      return img;
-    } catch (e) {
-      // silently try next service
-    }
-  }
-  return null;
-}
-
-function makeFB(u, bg, rn, sz=80) {
-  const c = document.createElement("canvas");
-  c.width = sz; c.height = sz;
-  const x = c.getContext("2d"), r = sz/2;
-  const g = x.createRadialGradient(r*.6,r*.5,r*.1, r,r,r);
-  g.addColorStop(0,rn); g.addColorStop(1,bg);
-  x.beginPath(); x.arc(r,r,r,0,TAU); x.fillStyle=g; x.fill();
-  let h=0; for(const ch of u) h=(h*31+ch.charCodeAt(0))&0xffff;
-  const sz2=Math.floor(sz*.38);
-  if(sz > 10){
-    x.font = `${sz2}px serif`;
-    x.textAlign="center"; x.textBaseline="middle";
-    x.fillText(EMOJIS[h%EMOJIS.length], r, r*.86);
-  }
-  if(sz > 24){
-    x.fillStyle="rgba(255,255,255,.75)";
-    x.font=`bold ${Math.floor(sz*.13)}px Fredoka`;
-    x.fillText(u.slice(0,5), r, r*1.6);
-  }
+function makeFB(u,bg,rn,sz=80){
+  const c=document.createElement("canvas");c.width=sz;c.height=sz;
+  const x=c.getContext("2d"),r=sz/2;
+  const g=x.createRadialGradient(r*.6,r*.5,r*.1,r,r,r);
+  g.addColorStop(0,rn);g.addColorStop(1,bg);
+  x.beginPath();x.arc(r,r,r,0,TAU);x.fillStyle=g;x.fill();
+  x.fillStyle="rgba(255,255,255,.9)";
+  x.font=`bold ${Math.floor(sz*.22)}px Fredoka`;
+  x.textAlign="center";x.textBaseline="middle";
+  x.fillText(u.length>8?u.slice(0,8):u,r,r);
   return c;
 }
 
-/* ─────────────────────────────────────────────
-   LOAD PARTICIPANTS
-───────────────────────────────────────────── */
-let PARTICIPANTS = [];
-
-async function loadParticipants(usernames) {
-  const statusEl = document.getElementById("ld-status");
-  const progEl   = document.getElementById("ld-prog");
-  const barEl    = document.getElementById("ld-bar");
-  const btn      = document.getElementById("btn-load");
-
-  if (!usernames.length) {
-    statusEl.textContent = "⚠️ No valid usernames found."; return;
+class Circle{
+  constructor(id,x,y,r,p){
+    this.id=id;this.x=x;this.y=y;this.r=r;this.tR=r;
+    this.un=p.un;this.hd=p.hd;this.cl=p.cl;this.rn=p.rn;
+    this.alive=true;this.pulse=0;this.kills=0;
+    const a=rand(0,TAU),s=rand(CFG.MIN_SPD,CFG.MAX_SPD);
+    this.vx=Math.cos(a)*s;this.vy=Math.sin(a)*s;
   }
-
-  btn.disabled = true;
-  btn.textContent = "⏳ Fetching photos…";
-  progEl.style.display = "block";
-  barEl.style.width = "0%";
-
-  PARTICIPANTS = [];
-  let ok=0, fail=0;
-  statusEl.textContent = `⏳ Loading ${usernames.length} profiles…`;
-
-  for (let i=0; i<usernames.length; i++) {
-    const u = usernames[i];
-    const pal = PAL[i % PAL.length];
-    const img = await fetchAvatar(u);
-    PARTICIPANTS.push({
-      username: u,
-      handle: `@${u}`,
-      color: pal.b,
-      ring: pal.r,
-      avatarImg: img,
-    });
-    ok   += img ? 1 : 0;
-    fail += img ? 0 : 1;
-    barEl.style.width = ((i+1)/usernames.length*100)+"%";
-    statusEl.textContent =
-      `⏳ ${i+1}/${usernames.length} — ✓${ok} photos, ✗${fail} fallback`;
-    await new Promise(r => setTimeout(r, 200));
+  update(b){
+    const m=CFG.SM;this.x+=this.vx*m;this.y+=this.vy*m;
+    if(this.x-this.r<b.l){this.x=b.l+this.r;this.vx=Math.abs(this.vx)}
+    if(this.x+this.r>b.r){this.x=b.r-this.r;this.vx=-Math.abs(this.vx)}
+    if(this.y-this.r<b.t){this.y=b.t+this.r;this.vy=Math.abs(this.vy)}
+    if(this.y+this.r>b.b){this.y=b.b-this.r;this.vy=-Math.abs(this.vy)}
+    if(Math.abs(this.r-this.tR)>.2)this.r=lerp(this.r,this.tR,CFG.LERP);
+    else this.r=this.tR;if(this.pulse>0)this.pulse-=.03;
   }
-
-  btn.disabled = false;
-  btn.textContent = "🐾 Load Participants";
-  statusEl.innerHTML =
-    `✅ <strong>${PARTICIPANTS.length}</strong> participants ready! ` +
-    `✓${ok} real photos · ✗${fail} fallback avatars. Click ▶ Start!`;
-
-  document.getElementById("part-count").textContent = PARTICIPANTS.length;
-  SIM.init();
+  draw(ctx){
+    if(!this.alive)return;
+    if(this.pulse>0){
+      const g=ctx.createRadialGradient(this.x,this.y,this.r,this.x,this.y,this.r+22*this.pulse);
+      g.addColorStop(0,`rgba(201,168,76,${.5*this.pulse})`);g.addColorStop(1,"rgba(201,168,76,0)");
+      ctx.beginPath();ctx.arc(this.x,this.y,this.r+22*this.pulse,0,TAU);ctx.fillStyle=g;ctx.fill();
+    }
+    const grad=ctx.createRadialGradient(this.x-this.r*.3,this.y-this.r*.3,this.r*.1,this.x,this.y,this.r);
+    grad.addColorStop(0,this.rn);grad.addColorStop(1,this.cl);
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,TAU);ctx.fillStyle=grad;ctx.fill();
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,TAU);
+    ctx.strokeStyle=this.rn;ctx.lineWidth=2;ctx.stroke();
+    if(this.r>6){
+      const maxC=Math.max(2,Math.floor(this.r/4));
+      const dn=this.un.length>maxC?this.un.slice(0,maxC):this.un;
+      const fs=Math.max(5,Math.min(this.r*.45,16));
+      ctx.fillStyle="rgba(255,255,255,.95)";
+      ctx.font=`bold ${fs}px Fredoka,sans-serif`;
+      ctx.textAlign="center";ctx.textBaseline="middle";
+      ctx.fillText(dn,this.x,this.y);
+    }
+    if(this.r>25){
+      ctx.fillStyle="rgba(180,165,149,.85)";
+      ctx.font=`700 ${Math.max(7,this.r*.18)}px Nunito`;
+      ctx.textAlign="center";ctx.textBaseline="top";
+      ctx.fillText("@"+this.un,this.x,this.y+this.r+3);
+    }
+  }
+  hits(o){return dist(this,o)<(this.r+o.r)}
 }
 
-/* ─────────────────────────────────────────────
-   CIRCLE CLASS
-───────────────────────────────────────────── */
-class Circle {
-  constructor(id, x, y, r, p) {
-    this.id   = id;
-    this.x    = x; this.y = y;
-    this.r    = r; this.tR = r;
-    this.un   = p.username;
-    this.hd   = p.handle;
-    this.cl   = p.color;
-    this.rn   = p.ring;
-    this.ai   = p.avatarImg;
-    this.alive  = true;
-    this.pulse  = 0;
-    this.trail  = [];
-    this.kills  = 0;
+let COMP=[];
 
-    // Each circle gets a random pet emoji based on username
-    let h = 0;
-    for (const ch of this.un) h = (h*31 + ch.charCodeAt(0)) & 0xffff;
-    this.emoji = EMOJIS[h % EMOJIS.length];
-
-    const angle = rand(0, TAU);
-    const spd   = rand(0.6, 1.4) * CFG.BASE_SPD * CFG.speedMult;
-    this.vx = Math.cos(angle) * spd;
-    this.vy = Math.sin(angle) * spd;
-  }
-
-  update(b) {
-    const m = CFG.SM;
-    // Trail
-    this.trail.push({ x:this.x, y:this.y, r:this.r });
-    if (this.trail.length > 5) this.trail.shift();
-
-    this.x += this.vx * m;
-    this.y += this.vy * m;
-
-    if (this.x - this.r < b.l) { this.x = b.l+this.r; this.vx =  Math.abs(this.vx); }
-    if (this.x + this.r > b.r) { this.x = b.r-this.r; this.vx = -Math.abs(this.vx); }
-    if (this.y - this.r < b.t) { this.y = b.t+this.r; this.vy =  Math.abs(this.vy); }
-    if (this.y + this.r > b.b) { this.y = b.b-this.r; this.vy = -Math.abs(this.vy); }
-
-    // Smooth growth
-    if (Math.abs(this.r - this.tR) > 0.2)
-      this.r = lerp(this.r, this.tR, CFG.LERP);
-    else
-      this.r = this.tR;
-
-    if (this.pulse > 0) this.pulse -= 0.03;
-  }
-
-  draw(ctx) {
-    if (!this.alive) return;
-
-    const r = this.r;
-    const ta = CFG.trailAlpha;
-
-    // Trail (only if circle is large enough)
-    if (r > 6) {
-      for (let i=0; i<this.trail.length; i++) {
-        const t = this.trail[i];
-        ctx.globalAlpha = (i/this.trail.length) * ta;
-        ctx.beginPath();
-        ctx.arc(t.x, t.y, t.r*0.88, 0, TAU);
-        ctx.fillStyle = this.cl;
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-    }
-
-    // Pulse glow on absorption
-    if (this.pulse > 0) {
-      const glow = ctx.createRadialGradient(
-        this.x, this.y, r,
-        this.x, this.y, r + Math.max(8, r*0.6) * this.pulse
-      );
-      glow.addColorStop(0, `rgba(251,191,36,${0.55*this.pulse})`);
-      glow.addColorStop(1, "rgba(251,191,36,0)");
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, r + Math.max(8,r*0.6)*this.pulse, 0, TAU);
-      ctx.fillStyle = glow;
-      ctx.fill();
-    }
-
-    // ── Circle body ──
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, r, 0, TAU);
-    ctx.clip();
-
-    // Profile picture fades in as circle grows
-    const picAlpha = this.ai
-      ? clamp((r - CFG.picThreshold) / (CFG.picThreshold * 0.5), 0, 1)
-      : 0;
-
-    // Always draw colour gradient base
-    const g = ctx.createRadialGradient(
-      this.x - r*0.3, this.y - r*0.3, r*0.1,
-      this.x, this.y, r
-    );
-    g.addColorStop(0, this.rn);
-    g.addColorStop(1, this.cl);
-    ctx.fillStyle = g;
-    ctx.fill();
-
-    // Overlay profile picture (fades in)
-    if (this.ai && picAlpha > 0) {
-      const d = r * 2;
-      ctx.globalAlpha = picAlpha;
-      ctx.drawImage(this.ai, this.x-r, this.y-r, d, d);
-      ctx.globalAlpha = 1;
-    }
-
-    // Pet emoji — shown when circle is big enough but pic not yet fully loaded
-    if (r >= 7 && picAlpha < 0.8) {
-      const emojiSz = clamp(r * 0.8, 6, 32);
-      ctx.globalAlpha = 1 - picAlpha * 0.8;
-      ctx.font        = `${emojiSz}px serif`;
-      ctx.textAlign   = "center";
-      ctx.textBaseline= "middle";
-      ctx.fillText(this.emoji, this.x, this.y);
-      ctx.globalAlpha = 1;
-    }
-
-    ctx.restore();
-
-    // Ring border (skip for very tiny circles to save perf)
-    if (r > 4) {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, r, 0, TAU);
-      ctx.strokeStyle = this.rn;
-      ctx.lineWidth   = clamp(r * 0.12, 0.8, 3);
-      ctx.globalAlpha = 0.75;
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    }
-
-    // Specular highlight (only for medium+ circles)
-    if (r > 10) {
-      ctx.beginPath();
-      ctx.arc(this.x - r*0.25, this.y - r*0.28, r*0.25, 0, TAU);
-      ctx.fillStyle = "rgba(255,255,255,0.14)";
-      ctx.fill();
-    }
-
-    // Username label below (only when large enough)
-    if (r > CFG.labelThreshold) {
-      ctx.fillStyle    = "rgba(240,230,255,0.9)";
-      ctx.font         = `700 ${clamp(r*0.2, 7, 13)}px Nunito`;
-      ctx.textAlign    = "center";
-      ctx.textBaseline = "top";
-      ctx.fillText("@"+this.un, this.x, this.y + r + 2);
-    }
-  }
-
-  hits(o) { return dist(this, o) < (this.r + o.r); }
-}
-
-/* ─────────────────────────────────────────────
-   SIMULATION
-───────────────────────────────────────────── */
-class Sim {
-  constructor(cv) {
-    this.cv = cv;
-    this.cx = cv.getContext("2d");
-    this.cc = [];
-    this.running = false;
-    this.winner  = null;
-    this.raf = null;
-    this.cn = 0;
-    this.st = null;
-    this.el = 0;
-    cv.width  = CFG.W;
-    cv.height = CFG.H;
-    this.bd = { l:CFG.PAD, t:CFG.PAD, r:CFG.W-CFG.PAD, b:CFG.H-CFG.PAD };
-  }
-
-  init() {
-    this.cc = [];
-    this.winner = null;
-    this.cn = 0;
-    this.st = null;
-    this.el = 0;
-    cancelAnimationFrame(this.raf);
-
-    if (!PARTICIPANTS.length) {
-      this._drawEmpty();
-      setStatus("waiting","Load participants in the admin panel to begin.");
-      return;
-    }
-
-    const n = PARTICIPANTS.length;
-
-    // ★ Auto-scale everything to participant count
-    const scale = computeScale(n, CFG.W, CFG.H);
-    CFG.minR          = scale.minR;
-    CFG.maxR          = scale.maxR;
-    CFG.speedMult     = scale.speedMult;
-    CFG.picThreshold  = scale.picThreshold;
-    CFG.trailAlpha    = scale.trailAlpha;
-    CFG.labelThreshold= scale.labelThreshold;
-
-    // Update info box for admin
-    document.getElementById("scale-info").innerHTML =
-      `🔢 <strong>${n} participants</strong> detected · ` +
-      `Circle size: <strong>${CFG.minR.toFixed(1)}–${CFG.maxR.toFixed(1)}px</strong> · ` +
-      `Speed mult: <strong>${CFG.speedMult.toFixed(2)}×</strong> · ` +
-      `Photos fade in at <strong>${CFG.picThreshold.toFixed(0)}px</strong> radius`;
-
-    // Shuffle and place circles
-    const shuffled = shuffle(PARTICIPANTS);
-    const b = this.bd;
-    let id=0, tries=0;
-
-    // For large counts, use grid placement instead of random
-    // to avoid infinite collision loops
-    if (n > 200) {
-      this._gridPlace(shuffled, b, id);
-    } else {
-      while (this.cc.length < n && tries < 30000) {
-        tries++;
-        const p = shuffled[this.cc.length];
-        const r = rand(CFG.minR, CFG.maxR);
-        const x = rand(b.l+r+2, b.r-r-2);
-        const y = rand(b.t+r+2, b.b-r-2);
-        if (this.cc.every(c => dist({x,y},c) > r+c.r+1))
-          this.cc.push(new Circle(id++, x, y, r, p));
-      }
-    }
-
-    document.getElementById("alive-count").textContent = this.cc.length;
-    this._hud();
-    this._draw();
-    renderRoster(this.cc);
-    setStatus("waiting",
-      `${n} participants ready! Click ▶ Start to begin the arena.`);
-  }
-
-  // Grid-based placement for large counts (fast & guaranteed)
-  _gridPlace(shuffled, b, startId) {
-    const n  = shuffled.length;
-    const r  = (CFG.minR + CFG.maxR) / 2;
-    const gap= r * 0.15;
-    const cols = Math.ceil(Math.sqrt(n * (CFG.W/CFG.H)));
-    const rows = Math.ceil(n / cols);
-    const cellW = (b.r - b.l) / cols;
-    const cellH = (b.b - b.t) / rows;
-    let id = startId;
-
-    for (let i=0; i<n; i++) {
-      const col = i % cols;
-      const row = Math.floor(i / cols);
-      const cx  = b.l + cellW*(col+0.5) + rand(-gap,gap);
-      const cy  = b.t + cellH*(row+0.5) + rand(-gap,gap);
-      const cr  = rand(CFG.minR, CFG.maxR);
-      this.cc.push(new Circle(id++, cx, cy, cr, shuffled[i]));
-    }
-  }
-
-  _coll() {
-    const alive = this.cc.filter(c => c.alive);
-    const n = alive.length;
-
-    // For large numbers use spatial grid for O(n) instead of O(n²)
-    if (n > 150) {
-      this._collGrid(alive);
-    } else {
-      // Standard O(n²) for small counts
-      for (let i=0; i<n; i++) {
-        for (let j=i+1; j<n; j++) {
-          const a=alive[i], b=alive[j];
-          if (!a.alive || !b.alive) continue;
-          if (a.hits(b)) this._absorb(a, b);
-        }
-      }
-    }
-  }
-
-  // Spatial grid collision — fast for 150-2000+ circles
-  _collGrid(alive) {
-    const cellSz = Math.max(...alive.map(c=>c.r)) * 2 + 2;
-    const grid   = new Map();
-
-    const key = (cx,cy) => `${cx},${cy}`;
-    const gx  = c => Math.floor(c.x / cellSz);
-    const gy  = c => Math.floor(c.y / cellSz);
-
-    // Build grid
-    for (const c of alive) {
-      const k = key(gx(c), gy(c));
-      if (!grid.has(k)) grid.set(k, []);
-      grid.get(k).push(c);
-    }
-
-    // Check neighbours
-    for (const c of alive) {
-      if (!c.alive) continue;
-      const cx = gx(c), cy = gy(c);
-      for (let dx=-1; dx<=1; dx++) {
-        for (let dy=-1; dy<=1; dy++) {
-          const neighbours = grid.get(key(cx+dx, cy+dy));
-          if (!neighbours) continue;
-          for (const o of neighbours) {
-            if (o === c || !o.alive || !c.alive) continue;
-            if (c.hits(o)) this._absorb(c, o);
-          }
-        }
-      }
-    }
-  }
-
-  _absorb(a, b) {
-    let w, l;
-    if (a.tR > b.tR) { w=a; l=b; }
-    else if (b.tR > a.tR) { w=b; l=a; }
-    else {
-      switch(CFG.TB) {
-        case"speed":{const sa=Math.hypot(a.vx,a.vy),sb=Math.hypot(b.vx,b.vy);
-          [w,l]=sa>=sb?[a,b]:[b,a];break}
-        case"older":[w,l]=a.id<b.id?[a,b]:[b,a];break;
-        default:[w,l]=Math.random()<.5?[a,b]:[b,a];
-      }
-    }
-    w.tR = areaToR(area(w.tR) + area(l.tR));
-    // Speed reduces as mass grows (momentum conservation feel)
-    const massFactor = Math.sqrt(area(l.tR) / area(w.tR));
-    w.vx *= (1 - massFactor * 0.08);
-    w.vy *= (1 - massFactor * 0.08);
-    w.pulse = 1;
-    w.kills++;
-    l.alive = false;
-    this.cn++;
-    this._feed(w, l);
-    updRoster(l.id);
-  }
-
-  _drawArena() {
-    const cx=this.cx, b=this.bd;
-    cx.fillStyle = "#1a1028";
-    cx.fillRect(0,0,CFG.W,CFG.H);
-    const ag = cx.createRadialGradient(CFG.W/2,CFG.H/2,50,CFG.W/2,CFG.H/2,CFG.W*.55);
-    ag.addColorStop(0,"#2a1848"); ag.addColorStop(1,"#1a1028");
-    cx.beginPath(); rrect(cx,b.l,b.t,b.r-b.l,b.b-b.t,14);
-    cx.fillStyle=ag; cx.fill();
-    // Grid lines
-    cx.strokeStyle="rgba(168,85,247,.035)"; cx.lineWidth=1;
-    const gs = Math.max(30, Math.min(60, 4000 / Math.sqrt(PARTICIPANTS.length||1)));
-    for(let gx=b.l;gx<=b.r;gx+=gs){cx.beginPath();cx.moveTo(gx,b.t);cx.lineTo(gx,b.b);cx.stroke()}
-    for(let gy=b.t;gy<=b.b;gy+=gs){cx.beginPath();cx.moveTo(b.l,gy);cx.lineTo(b.r,gy);cx.stroke()}
-    // Watermark
-    cx.fillStyle="rgba(168,85,247,.035)";
-    cx.font="90px serif"; cx.textAlign="center"; cx.textBaseline="middle";
-    cx.fillText("🐾",CFG.W/2,CFG.H/2);
-    // Border glow
-    cx.beginPath(); rrect(cx,b.l,b.t,b.r-b.l,b.b-b.t,14);
-    cx.strokeStyle="rgba(168,85,247,.3)"; cx.lineWidth=2;
-    cx.shadowColor="rgba(168,85,247,.2)"; cx.shadowBlur=20;
-    cx.stroke(); cx.shadowBlur=0;
-  }
-
-  _drawEmpty() {
+class Sim{
+  constructor(cv){
+    this.cv=cv;this.cx=cv.getContext("2d",{alpha:false});
+    this.cc=[];this.run=false;this.raf=null;this.cn=0;this.st=null;this.el=0;
+    cv.width=CFG.W;cv.height=CFG.H;
+    this.bd={l:CFG.PAD,t:CFG.PAD,r:CFG.W-CFG.PAD,b:CFG.H-CFG.PAD};
     this._drawArena();
-    this.cx.fillStyle="rgba(200,180,230,.5)";
-    this.cx.font="bold 16px Nunito";
-    this.cx.textAlign="center"; this.cx.textBaseline="middle";
-    this.cx.fillText(
-      "Add participants in Admin Panel → Load Participants",
-      CFG.W/2, CFG.H/2+80
-    );
   }
-
-  _draw() {
-    this._drawArena();
-    // Draw dead circles (very faint) then living
-    const alive = this.cc.filter(c=>c.alive).sort((a,b)=>b.r-a.r);
-    alive.forEach(c => c.draw(this.cx));
+  init(){
+    this.cc=[];this.run=false;this.cn=0;this.st=null;this.el=0;
+    cancelAnimationFrame(this.raf);if(!COMP.length){this._drawArena();return}
+    const b=this.bd,w=b.r-b.l,h=b.b-b.t,n=COMP.length;
+    const tA=(w*h)*.35,aPC=tA/n;
+    let bR=Math.sqrt(aPC/Math.PI);bR=Math.max(3,Math.min(bR,20));
+    const cols=Math.ceil(Math.sqrt(n*(w/h))),rows=Math.ceil(n/cols);
+    const cW=w/cols,cH=h/rows;let id=0;
+    const sh=[...COMP].sort(()=>Math.random()-.5);
+    for(let r=0;r<rows;r++){for(let c=0;c<cols;c++){if(id>=n)break;
+      const cx=b.l+c*cW+cW/2+rand(-cW*.3,cW*.3);
+      const cy=b.t+r*cH+cH/2+rand(-cH*.3,cH*.3);
+      this.cc.push(new Circle(id,cx,cy,bR*rand(.8,1.2),sh[id]));id++}}
+    this._hud();this._draw();document.getElementById("comp-count").textContent=n;
+    setStatus("waiting",`${n} competitors ready`);
   }
-
-  _loop = () => {
-    if (!this.running) return;
-    if (!this.st) this.st = Date.now();
-    this.el = Date.now() - this.st;
-
-    this.cc.filter(c=>c.alive).forEach(c => c.update(this.bd));
-    this._coll();
-    this._draw();
-    this._hud();
-
-    // Update leaderboard every 30 frames (perf)
-    if (Math.round(this.el/16.7) % 30 === 0) this._lb();
-
-    const alive = this.cc.filter(c=>c.alive);
-    if (alive.length === 1 && !this.winner) {
-      this.winner  = alive[0];
-      this.running = false;
-      this._showWinner(this.winner);
-      recordWin(this.winner);
-      return;
-    }
-    this.raf = requestAnimationFrame(this._loop);
+  _coll(){
+    const al=this.cc.filter(c=>c.alive);
+    for(let i=0;i<al.length;i++){for(let j=i+1;j<al.length;j++){
+      const a=al[i],b=al[j];if(!a.alive||!b.alive||!a.hits(b))continue;
+      let w,l;if(a.tR>b.tR){w=a;l=b}else if(b.tR>a.tR){w=b;l=a}
+      else{if(CFG.TB==="speed")[w,l]=Math.hypot(a.vx,a.vy)>=Math.hypot(b.vx,b.vy)?[a,b]:[b,a];
+      else[w,l]=Math.random()<.5?[a,b]:[b,a]}
+      w.tR=areaToR(area(w.tR)+area(l.tR));w.vx*=.98;w.vy*=.98;w.pulse=1;w.kills++;l.alive=false;this.cn++}}
+  }
+  _drawArena(){
+    const cx=this.cx,b=this.bd;cx.fillStyle="#1e1610";cx.fillRect(0,0,CFG.W,CFG.H);
+    const ag=cx.createRadialGradient(CFG.W/2,CFG.H/2,50,CFG.W/2,CFG.H/2,CFG.W*.55);
+    ag.addColorStop(0,"#2e2318");ag.addColorStop(1,"#1e1610");
+    cx.beginPath();rr(cx,b.l,b.t,b.r-b.l,b.b-b.t,16);cx.fillStyle=ag;cx.fill();
+    cx.strokeStyle="rgba(196,176,156,.12)";cx.lineWidth=1;
+    for(let gx=b.l;gx<=b.r;gx+=50){cx.beginPath();cx.moveTo(gx,b.t);cx.lineTo(gx,b.b);cx.stroke()}
+    for(let gy=b.t;gy<=b.b;gy+=50){cx.beginPath();cx.moveTo(b.l,gy);cx.lineTo(b.r,gy);cx.stroke()}
+    cx.beginPath();rr(cx,b.l,b.t,b.r-b.l,b.b-b.t,16);
+    cx.strokeStyle="rgba(196,176,156,.2)";cx.lineWidth=2;cx.stroke();
+  }
+  _draw(){this._drawArena();this.cc.filter(c=>c.alive).sort((a,b)=>b.r-a.r).forEach(c=>c.draw(this.cx))}
+  _loop=()=>{
+    if(!this.run)return;if(!this.st)this.st=Date.now();this.el=Date.now()-this.st;
+    this.cc.filter(c=>c.alive).forEach(c=>c.update(this.bd));this._coll();this._draw();this._hud();
+    const alive=this.cc.filter(c=>c.alive);
+    if(alive.length===1){this.run=false;this._hud();setTimeout(()=>this._showWin(alive[0]),500);return}
+    this.raf=requestAnimationFrame(this._loop);
   };
-
-  start() {
-    if (!PARTICIPANTS.length) { alert("Load participants first!"); return; }
-    if (!this.cc.length) this.init();
-    if (!this.running && !this.winner) {
-      this.running = true;
-      setStatus("live","🔴 LIVE — PawPaw Arena is in progress!");
-      this._loop();
-    }
+  start(){if(!COMP.length){alert("Load competitors first");return}
+    if(!this.cc.length)this.init();if(!this.run){this.run=true;
+    setStatus("live","Competition in progress");this._loop()}}
+  pause(){this.run=false;cancelAnimationFrame(this.raf);setStatus("waiting","Paused")}
+  reset(){this.pause();this.cc=[];this.cn=0;this.st=null;this.el=0;
+    document.getElementById("champ-ov").classList.remove("show");
+    document.getElementById("champ-conf").innerHTML="";
+    this._drawArena();this._hud();setStatus("waiting","Arena reset");this.init()}
+  _hud(){
+    const al=this.cc.filter(c=>c.alive);
+    const big=al.length?al.reduce((m,c)=>c.tR>m.tR?c:m,al[0]):null;
+    const s=Math.floor(this.el/1000);
+    document.getElementById("s-alive").textContent=al.length;
+    document.getElementById("s-elim").textContent=this.cc.length-al.length;
+    document.getElementById("s-big").textContent=big?big.un:"—";
+    document.getElementById("s-coll").textContent=this.cn;
+    document.getElementById("s-time").textContent=`${pad0(Math.floor(s/60))}:${pad0(s%60)}`;
   }
-
-  pause() {
-    this.running = false;
-    cancelAnimationFrame(this.raf);
-    if (!this.winner) setStatus("waiting","⏸ Paused");
-  }
-
-  reset() {
-    this.running = false;
-    cancelAnimationFrame(this.raf);
-    this.cc=[]; this.winner=null; this.cn=0; this.st=null; this.el=0;
-    hideWinner();
-    this._drawEmpty();
-    document.getElementById("alive-count").textContent="0";
-    setStatus("waiting","Reset. Load participants to begin.");
-    this._hud();
-  }
-
-  _hud() {
-    const alive = this.cc.filter(c=>c.alive);
-    const big   = alive.reduce((m,c)=>c.tR>m.tR?c:m, alive[0]);
-    const s     = Math.floor(this.el/1000);
-    document.getElementById("s-alive").textContent = alive.length;
-    document.getElementById("s-elim").textContent  = this.cc.length - alive.length;
-    document.getElementById("s-big").textContent   = big ? big.un : "—";
-    document.getElementById("s-coll").textContent  = this.cn;
-    document.getElementById("s-time").textContent  =
-      `${pad0(Math.floor(s/60))}:${pad0(s%60)}`;
-    document.getElementById("alive-count").textContent = alive.length;
-  }
-
-  _lb() {
-    const alive = this.cc.filter(c=>c.alive).sort((a,b)=>b.tR-a.tR);
-    const el    = document.getElementById("lb-body");
-    el.innerHTML = "";
-    alive.slice(0,20).forEach((c,i) => {
-      const rc  = i===0?"r1":i===1?"r2":i===2?"r3":"";
-      const row = document.createElement("div"); row.className="lb-row";
-      const av  = document.createElement("div"); av.className="lb-av";
-      if (c.ai) {
-        const img=document.createElement("img");
-        img.src=c.ai.src; img.crossOrigin="anonymous"; av.appendChild(img);
-      } else av.appendChild(makeFB(c.un,c.cl,c.rn,36));
-      row.innerHTML=`<div class="lb-rank ${rc}">${i===0?"👑":i+1}</div>`;
-      row.appendChild(av);
-      row.innerHTML+=`
-        <div class="lb-inf">
-          <div class="lb-nm">${c.un}</div>
-          <div class="lb-hd">${c.hd}</div>
-        </div>
-        <div class="lb-sz">${Math.round(c.tR)}</div>
-      `;
-      el.appendChild(row);
-    });
-  }
-
-  _feed(w,l) {
-    const box = document.getElementById("feed-box");
-    if (box.querySelector("div[style]")) box.innerHTML="";
-    const e = document.createElement("div"); e.className="f-entry";
-    const s = Math.floor(this.el/1000);
-    e.innerHTML=`<span>💥</span>
-      <span class="fw">${w.hd}</span>
-      <span style="color:var(--tm)">absorbed</span>
-      <span class="fl">${l.hd}</span>
-      <span class="ft">${pad0(Math.floor(s/60))}:${pad0(s%60)}</span>`;
-    box.prepend(e);
-    if (box.children.length>80) box.removeChild(box.lastChild);
-  }
-
-  _showWinner(w) {
-    document.getElementById("w-nm").textContent = w.un;
-    document.getElementById("w-hd").textContent = w.hd;
-    document.getElementById("w-av").src = w.ai
-      ? w.ai.src
-      : makeFB(w.un, w.cl, w.rn, 150).toDataURL();
-    document.getElementById("w-sub").textContent =
-      `Beat ${PARTICIPANTS.length} participants to become ` +
-      `this week's Cutest PawPaw! 🎉`;
-    spawnConf("conf-box");
-    document.getElementById("w-ov").classList.add("show");
-    setStatus("finished",`🏆 @${w.un} is the Cutest PawPaw of the Week!`);
+  _showWin(w){
+    document.getElementById("champ-nm").textContent=w.un;
+    document.getElementById("champ-hd").textContent=w.hd;
+    document.getElementById("champ-sub").textContent=`Defeated ${COMP.length-1} competitors`;
+    const c=document.getElementById("champ-av-canvas"),x=c.getContext("2d"),r=61;
+    const g=x.createRadialGradient(r*.6,r*.5,r*.1,r,r,r);
+    g.addColorStop(0,w.rn);g.addColorStop(1,w.cl);
+    x.beginPath();x.arc(r,r,r-2,0,TAU);x.fillStyle=g;x.fill();
+    x.fillStyle="rgba(255,255,255,.95)";x.font="bold 18px Fredoka";
+    x.textAlign="center";x.textBaseline="middle";
+    x.fillText(w.un.length>10?w.un.slice(0,10):w.un,r,r);
+    setStatus("finished",`${w.un} is the Cutest PawPaw of the Week`);
+    const cb=document.getElementById("champ-conf");cb.innerHTML="";
+    const cls=["#c9a84c","#dfc06a","#d4c5b2","#a8917a","#8b6f56","#ffffff","#e8ddd0","#b8a48e"];
+    for(let i=0;i<70;i++){const p=document.createElement("div");p.className="conf-p";
+      p.style.left=rand(0,100)+"%";p.style.width=rand(5,10)+"px";p.style.height=rand(5,10)+"px";
+      p.style.background=cls[Math.floor(rand(0,cls.length))];
+      p.style.borderRadius=Math.random()>.5?"50%":"2px";
+      p.style.animationDuration=rand(2,5)+"s";p.style.animationDelay=rand(0,2)+"s";
+      p.style.opacity=rand(.5,.9);cb.appendChild(p)}
+    document.getElementById("champ-ov").classList.add("show");
+    const d=loadData();d.history.push({week:`Week ${d.weekNum}`,username:w.un,handle:w.hd,
+      color:w.cl,ring:w.rn,kills:w.kills,
+      date:new Date().toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})});
+    d.weekNum++;localStorage.setItem("pawpaw_data",JSON.stringify(d));
+    renderHOF();renderHist();updWeek();
   }
 }
 
-/* ─────────────────────────────────────────────
-   HELPERS
-───────────────────────────────────────────── */
-function rrect(cx,x,y,w,h,r){
-  cx.moveTo(x+r,y);cx.lineTo(x+w-r,y);cx.quadraticCurveTo(x+w,y,x+w,y+r);
-  cx.lineTo(x+w,y+h-r);cx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
-  cx.lineTo(x+r,y+h);cx.quadraticCurveTo(x,y+h,x,y+h-r);
-  cx.lineTo(x,y+r);cx.quadraticCurveTo(x,y,x+r,y);cx.closePath();
-}
-
-function renderRoster(cc) {
-  const s = document.getElementById("roster");
-  const cnt = document.getElementById("roster-count");
-  s.innerHTML = "";
-  if (!cc.length) {
-    s.innerHTML = `<div style="color:var(--tm);font-size:.82rem;
-      padding:8px;font-style:italic">No participants loaded</div>`;
-    cnt.textContent=""; return;
-  }
-  cc.forEach(c => {
-    const card = document.createElement("div");
-    card.className="r-card"; card.id=`r-${c.id}`;
-    const av=document.createElement("div"); av.className="r-av";
-    if(c.ai){const img=document.createElement("img");
-      img.src=c.ai.src;img.crossOrigin="anonymous";av.appendChild(img)}
-    else av.appendChild(makeFB(c.un,c.cl,c.rn,46));
-    card.appendChild(av);
-    card.innerHTML+=`<div class="r-un">${c.un}</div>`;
-    s.appendChild(card);
-  });
-  cnt.textContent = `${cc.length} participants this week`;
-}
-
-function updRoster(id){
-  const c=document.getElementById(`r-${id}`);
-  if(c) c.classList.add("elim");
-}
-
-function setStatus(type,text){
-  const el=document.getElementById("s-banner");
-  el.className="s-banner "+type;
-  document.getElementById("s-text").textContent=text;
-}
-
-function spawnConf(id){
-  const box=document.getElementById(id); box.innerHTML="";
-  const cols=["#ff8c42","#ff6b9d","#a855f7","#38bdf8","#34d399","#fbbf24","#f87171","#fb7185"];
-  for(let i=0;i<90;i++){
-    const p=document.createElement("div"); p.className="conf-p";
-    p.style.left=rand(0,100)+"%";
-    p.style.width=rand(6,13)+"px"; p.style.height=rand(6,13)+"px";
-    p.style.background=cols[Math.floor(rand(0,cols.length))];
-    p.style.borderRadius=Math.random()>.5?"50%":"2px";
-    p.style.animationDuration=rand(2,5)+"s";
-    p.style.animationDelay=rand(0,2)+"s";
-    p.style.opacity=rand(.6,1);
-    box.appendChild(p);
-  }
-}
-
-function hideWinner(){
-  document.getElementById("w-ov").classList.remove("show");
-  document.getElementById("conf-box").innerHTML="";
-}
-
-/* ─────────────────────────────────────────────
-   PERSISTENCE
-───────────────────────────────────────────── */
-function loadData(){
-  try{return JSON.parse(localStorage.getItem("pawpaw_data"))||{history:[],weekNum:1}}
-  catch{return{history:[],weekNum:1}}
-}
-function saveData(d){ localStorage.setItem("pawpaw_data",JSON.stringify(d)); }
-
-function recordWin(w){
-  const d=loadData(), now=new Date();
-  d.history.push({
-    week:`Week ${d.weekNum}`,
-    username:w.un, handle:w.hd,
-    color:w.cl, ring:w.rn,
-    avatarSrc: w.ai ? w.ai.src : null,
-    kills:w.kills,
-    total: PARTICIPANTS.length,
-    date:now.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}),
-  });
-  d.weekNum++; saveData(d);
-  renderHOF(); renderHist(); updWeek();
-}
+function rr(cx,x,y,w,h,r){cx.moveTo(x+r,y);cx.lineTo(x+w-r,y);cx.quadraticCurveTo(x+w,y,x+w,y+r);cx.lineTo(x+w,y+h-r);cx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);cx.lineTo(x+r,y+h);cx.quadraticCurveTo(x,y+h,x,y+h-r);cx.lineTo(x,y+r);cx.quadraticCurveTo(x,y,x+r,y);cx.closePath()}
+function loadData(){try{return JSON.parse(localStorage.getItem("pawpaw_data"))||{history:[],weekNum:1}}catch{return{history:[],weekNum:1}}}
+function setStatus(t,txt){document.getElementById("s-banner").className="s-banner "+t;document.getElementById("s-text").textContent=txt}
+function updWeek(){document.getElementById("wk-label").textContent=`Week ${loadData().weekNum} — ${new Date().getFullYear()}`}
 
 function renderHOF(){
-  const d=loadData(), wins={};
-  d.history.forEach(h=>{
-    if(!wins[h.username]) wins[h.username]={...h,count:0,weeks:[]};
-    wins[h.username].count++; wins[h.username].weeks.push(h.week);
-  });
+  const d=loadData(),wins={};
+  d.history.forEach(h=>{if(!wins[h.username])wins[h.username]={...h,count:0,weeks:[]};wins[h.username].count++;wins[h.username].weeks.push(h.week)});
   const legends=Object.values(wins).filter(w=>w.count>1).sort((a,b)=>b.count-a.count);
-  const em=document.getElementById("hof-empty");
-  const gr=document.getElementById("hof-grid");
+  const em=document.getElementById("hof-empty"),gr=document.getElementById("hof-grid");
   if(!legends.length){em.style.display="block";gr.style.display="none";return}
-  em.style.display="none"; gr.style.display="grid"; gr.innerHTML="";
-  legends.forEach(l=>{
-    const card=document.createElement("div"); card.className="hof-card";
-    const av=document.createElement("div"); av.className="hof-av";
-    if(l.avatarSrc){const img=document.createElement("img");
-      img.src=l.avatarSrc;img.crossOrigin="anonymous";av.appendChild(img)}
-    else av.appendChild(makeFB(l.username,l.color,l.ring,72));
-    card.appendChild(av);
-    card.innerHTML+=`
-      <div class="hof-nm">${l.username}</div>
-      <div class="hof-hd">${l.handle}</div>
-      <div class="hof-wins">🏆 ${l.count} Wins</div>
-      <div class="hof-wks">${l.weeks.join(", ")}</div>
-    `;
-    gr.appendChild(card);
-  });
+  em.style.display="none";gr.style.display="grid";gr.innerHTML="";
+  legends.forEach(l=>{const card=document.createElement("div");card.className="hof-card";
+    const av=document.createElement("div");av.className="hof-av";
+    av.appendChild(makeFB(l.username,l.color,l.ring,68));card.appendChild(av);
+    card.innerHTML+=`<div class="hof-nm">${l.username}</div><div class="hof-hd">${l.handle}</div><div class="hof-wins">${l.count} Wins</div><div class="hof-wks">${l.weeks.join(", ")}</div>`;
+    gr.appendChild(card)});
 }
 
 function renderHist(){
-  const d=loadData();
-  const list=document.getElementById("hist-list");
-  const em=document.getElementById("hist-empty");
+  const d=loadData(),list=document.getElementById("hist-list"),em=document.getElementById("hist-empty");
   if(!d.history.length){em.style.display="block";return}
-  em.style.display="none";
-  list.querySelectorAll(".hist-row").forEach(r=>r.remove());
+  em.style.display="none";list.querySelectorAll(".hist-row").forEach(r=>r.remove());
   [...d.history].reverse().forEach(h=>{
-    const row=document.createElement("div"); row.className="hist-row";
-    const av=document.createElement("div"); av.className="hist-av";
-    if(h.avatarSrc){const img=document.createElement("img");
-      img.src=h.avatarSrc;img.crossOrigin="anonymous";av.appendChild(img)}
-    else av.appendChild(makeFB(h.username,h.color,h.ring,32));
-    row.innerHTML=`<div class="hist-wk">${h.week}</div>`;
-    row.appendChild(av);
-    row.innerHTML+=`
-      <div class="hist-info">
-        <div class="hist-nm">${h.username}</div>
-        <div class="hist-hd">${h.handle} · beat ${h.total||"?"} participants</div>
-      </div>
-      <div class="hist-dt">${h.date}</div>
-    `;
-    list.appendChild(row);
-  });
+    const row=document.createElement("div");row.className="hist-row";
+    const av=document.createElement("div");av.className="hist-av";
+    av.appendChild(makeFB(h.username,h.color,h.ring,32));
+    row.innerHTML=`<div class="hist-wk">${h.week}</div>`;row.appendChild(av);
+    row.innerHTML+=`<div><div class="hist-nm">${h.username}</div><div class="hist-hd">${h.handle}</div></div><div class="hist-dt">${h.date}</div>`;
+    list.appendChild(row)});
 }
 
-function updWeek(){
-  const d=loadData();
-  document.getElementById("wk-label").textContent=
-    `Week ${d.weekNum} — ${new Date().getFullYear()}`;
-}
-
-/* ─────────────────────────────────────────────
-   FLOATING PAWS
-───────────────────────────────────────────── */
-function spawnPaws(){
-  const c=document.querySelector(".bg-decor");
-  const em=["🐾","🐶","🐱","🐰","🐹","🦊","🐻","🐼"];
-  for(let i=0;i<14;i++){
-    const p=document.createElement("div"); p.className="paw-fl";
-    p.textContent=em[Math.floor(rand(0,em.length))];
-    p.style.left=rand(5,95)+"%";
-    p.style.fontSize=rand(1.2,2.5)+"rem";
-    p.style.animationDuration=rand(16,30)+"s";
-    p.style.animationDelay=rand(0,22)+"s";
-    c.appendChild(p);
-  }
-}
-
-/* ─────────────────────────────────────────────
-   BOOT
-───────────────────────────────────────────── */
-let SIM;
-
+let SIM,ALL_U=[];
 document.addEventListener("DOMContentLoaded",()=>{
-  spawnPaws();
-  const canvas = document.getElementById("arena");
-  SIM = new Sim(canvas);
-  SIM._drawEmpty();
-  updWeek(); renderHOF(); renderHist();
+  const cv=document.getElementById("arena");SIM=new Sim(cv);
+  updWeek();renderHOF();renderHist();
 
-  // Admin
-  let adminMode = false;
+  let adm=false;
   document.getElementById("btn-admin").addEventListener("click",()=>{
-    if(adminMode) return;
-    const pw = prompt("Enter admin password:");
-    if(pw==="Edward2177!"){
-      adminMode=true;
-      document.getElementById("a-panel").classList.add("show");
-      document.getElementById("a-login").style.display="none";
-    } else alert("Wrong password.");
-  });
+    if(adm)return;if(prompt("Password:")==="pawpaw2025"){adm=true;
+    document.getElementById("a-panel").classList.add("show");
+    document.getElementById("a-login").style.display="none"}else alert("Wrong password")});
 
-  // Playback
-  document.getElementById("btn-start").onclick = ()=>SIM.start();
-  document.getElementById("btn-pause").onclick = ()=>SIM.pause();
-  document.getElementById("btn-reset").onclick = ()=>SIM.reset();
+  document.getElementById("btn-start").onclick=()=>SIM.start();
+  document.getElementById("btn-pause").onclick=()=>SIM.pause();
+  document.getElementById("btn-reset").onclick=()=>SIM.reset();
+  document.getElementById("btn-final-reset").onclick=()=>{
+    document.getElementById("champ-ov").classList.remove("show");
+    document.getElementById("champ-conf").innerHTML="";SIM.reset()};
+  document.getElementById("btn-save").onclick=()=>{
+    const l=document.createElement("a");l.download=`pawpaw-${Date.now()}.png`;
+    l.href=cv.toDataURL("image/png");l.click()};
+  document.getElementById("btn-wipe").onclick=()=>{
+    if(confirm("Reset ALL history to Week 1? This cannot be undone.")){
+    localStorage.removeItem("pawpaw_data");location.reload()}};
 
-  // Speed
-  document.querySelectorAll(".a-btn.speed").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      document.querySelectorAll(".a-btn.speed").forEach(b=>b.classList.remove("active"));
-      btn.classList.add("active");
-      CFG.SM = parseFloat(btn.dataset.speed);
-    });
-  });
+  document.querySelectorAll(".a-btn.speed").forEach(b=>{
+    b.addEventListener("click",()=>{document.querySelectorAll(".a-btn.speed").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");CFG.SM=parseFloat(b.dataset.speed)})});
+  document.getElementById("set-tb").addEventListener("change",e=>CFG.TB=e.target.value);
 
-  // Settings
-  document.getElementById("set-tb").addEventListener("change",e=>{CFG.TB=e.target.value});
-  const spdEl=document.getElementById("set-spd"),spdV=document.getElementById("rv-spd");
-  spdEl.addEventListener("input",()=>{CFG.BASE_SPD=parseFloat(spdEl.value);spdV.textContent=spdEl.value});
+  document.querySelectorAll(".inp-tab").forEach(t=>{
+    t.addEventListener("click",()=>{document.querySelectorAll(".inp-tab").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".tab-c").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");document.getElementById("tab-"+t.dataset.tab).classList.add("active")})});
 
-  // Tabs
-  document.querySelectorAll(".inp-tab").forEach(tab=>{
-    tab.addEventListener("click",()=>{
-      document.querySelectorAll(".inp-tab").forEach(t=>t.classList.remove("active"));
-      document.querySelectorAll(".tab-c").forEach(c=>c.classList.remove("active"));
-      tab.classList.add("active");
-      document.getElementById("tab-"+tab.dataset.tab).classList.add("active");
-    });
-  });
+  const fd=document.getElementById("file-drop"),fi=document.getElementById("file-input");
+  fd.onclick=()=>fi.click();
+  fd.ondragover=e=>{e.preventDefault();fd.classList.add("drag")};
+  fd.ondragleave=()=>fd.classList.remove("drag");
+  fd.ondrop=e=>{e.preventDefault();fd.classList.remove("drag");if(e.dataTransfer.files.length)handleFile(e.dataTransfer.files[0])};
+  fi.onchange=e=>{if(e.target.files.length)handleFile(e.target.files[0])};
 
-  // File upload
-  const fileDrop=document.getElementById("file-drop");
-  const fileInput=document.getElementById("file-input");
-  let fileUsernames=[];
-  fileDrop.addEventListener("click",()=>fileInput.click());
-  fileDrop.addEventListener("dragover",e=>{e.preventDefault();fileDrop.classList.add("drag")});
-  fileDrop.addEventListener("dragleave",()=>fileDrop.classList.remove("drag"));
-  fileDrop.addEventListener("drop",e=>{e.preventDefault();fileDrop.classList.remove("drag");
-    if(e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0])});
-  fileInput.addEventListener("change",e=>{if(e.target.files.length) handleFile(e.target.files[0])});
+  function handleFile(f){
+    const r=new FileReader();r.onload=e=>{
+      const t=e.target.result;let u=[];
+      if(f.name.endsWith(".json")){try{u=parseInstaJSON(JSON.parse(t));if(!u.length)u=parseUsernames(t)}catch{u=parseUsernames(t)}}
+      else u=parseUsernames(t);ALL_U=u;updPrev(u);
+      document.getElementById("ld-status").textContent=`${f.name} — ${u.length} usernames found`;
+    };r.readAsText(f)}
 
-  function handleFile(file){
-    const reader=new FileReader();
-    reader.onload=e=>{
-      const text=e.target.result;
-      let u=[];
-      if(file.name.endsWith(".json")){
-        try{const j=JSON.parse(text);u=parseInstagramJSON(j);if(!u.length)u=parseUsernames(text)}
-        catch{u=parseUsernames(text)}
-      } else u=parseUsernames(text);
-      fileUsernames=u;
-      updatePreview(u);
-      document.getElementById("ld-status").textContent=
-        `📁 ${file.name} — ${u.length} usernames found!`;
-    };
-    reader.readAsText(file);
-  }
+  function updPrev(u){
+    const p=document.getElementById("parsed-prev"),l=document.getElementById("parsed-lbl");
+    if(!u.length){p.style.display="none";l.textContent="0 usernames";return}
+    p.style.display="block";p.textContent=u.slice(0,300).map(x=>"@"+x).join(", ")+(u.length>300?` +${u.length-300} more`:"");
+    l.textContent=`${u.length} usernames`}
 
-  function updatePreview(u){
-    const prev=document.getElementById("parsed-prev");
-    const lbl=document.getElementById("parsed-lbl");
-    if(!u.length){prev.style.display="none";lbl.textContent="0 found";return}
-    prev.style.display="block";
-    prev.textContent=u.slice(0,200).map(x=>"@"+x).join(", ")
-      +(u.length>200?` … +${u.length-200} more`:"");
-    lbl.textContent=`${u.length} found`;
-  }
+  function getU(){
+    const tb=document.querySelector(".inp-tab.active").dataset.tab;
+    if(tb==="paste")return parseUsernames(document.getElementById("ta-paste").value);
+    if(tb==="comments")return parseUsernames(document.getElementById("ta-comments").value);
+    return ALL_U}
 
-  function getActiveUsernames(){
-    const tab=document.querySelector(".inp-tab.active").dataset.tab;
-    if(tab==="paste")    return parseUsernames(document.getElementById("ta-paste").value);
-    if(tab==="comments") return parseUsernames(document.getElementById("ta-comments").value);
-    return fileUsernames;
-  }
+  document.getElementById("ta-paste").oninput=()=>updPrev(getU());
+  document.getElementById("ta-comments").oninput=()=>updPrev(getU());
 
-  document.getElementById("ta-paste").addEventListener("input",
-    ()=>updatePreview(getActiveUsernames()));
-  document.getElementById("ta-comments").addEventListener("input",
-    ()=>updatePreview(getActiveUsernames()));
+  document.getElementById("btn-load").onclick=()=>{
+    const un=getU();if(!un.length){document.getElementById("ld-status").textContent="No valid usernames found";return}
+    COMP=un.map((u,i)=>{const p=PAL[i%PAL.length];return{un:u,hd:`@${u}`,cl:p.b,rn:p.r}});
+    document.getElementById("ld-status").textContent=`${un.length} competitors loaded`;
+    document.getElementById("comp-count").textContent=un.length;SIM.init()};
 
-  // LOAD
-  document.getElementById("btn-load").addEventListener("click",async()=>{
-    const u=getActiveUsernames();
-    if(!u.length){
-      document.getElementById("ld-status").textContent="⚠️ No usernames found.";return;
-    }
-    SIM.reset();
-    await loadParticipants(u);
-  });
-
-  // CLEAR
-  document.getElementById("btn-clr").addEventListener("click",()=>{
-    document.getElementById("ta-paste").value="";
-    document.getElementById("ta-comments").value="";
-    document.getElementById("parsed-prev").style.display="none";
-    document.getElementById("parsed-lbl").textContent="0 found";
-    document.getElementById("ld-status").textContent="Cleared.";
-    document.getElementById("ld-prog").style.display="none";
-    fileUsernames=[]; PARTICIPANTS=[]; SIM.reset();
-  });
-
-  // SAVE
-  document.getElementById("btn-save").addEventListener("click",()=>{
-    const link=document.createElement("a");
-    link.download=`pawpaw-champion-week${loadData().weekNum-1}-${Date.now()}.png`;
-    link.href=canvas.toDataURL("image/png"); link.click();
-  });
-
-  // NEW WEEK
-  document.getElementById("btn-newwk").addEventListener("click",()=>{
-    hideWinner(); SIM.reset();
-  });
+  document.getElementById("btn-clr").onclick=()=>{
+    document.getElementById("ta-paste").value="";document.getElementById("ta-comments").value="";
+    document.getElementById("parsed-prev").style.display="none";document.getElementById("parsed-lbl").textContent="0 usernames";
+    document.getElementById("ld-status").textContent="";ALL_U=[];COMP=[];SIM.reset()};
 });
 </script>
 </body>
