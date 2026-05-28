@@ -765,24 +765,47 @@ function parseInstagramJSON(json) {
 /* ─────────────────────────────────────────────
    AVATAR FETCHING
 ───────────────────────────────────────────── */
-function avUrl(u) {
-  return `https://unavatar.io/instagram/${encodeURIComponent(u)}`;
-}
+const AVATAR_SERVICES = [
+  u => `https://unavatar.io/instagram/${u}`,
+  u => `https://unavatar.io/${u}`,
+  u => `https://api.dicebear.com/7.x/thumbs/png?seed=${u}&size=128`,
+];
 
-function loadImg(url, ms=8000) {
-  return new Promise((ok,no) => {
+function loadImg(url, ms = 10000) {
+  return new Promise((ok, no) => {
     const img = new Image();
     img.crossOrigin = "anonymous";
-    const t = setTimeout(() => { img.src=""; no(); }, ms);
-    img.onload  = () => { clearTimeout(t); ok(img); };
-    img.onerror = () => { clearTimeout(t); no(); };
+
+    const timer = setTimeout(() => {
+      img.onload = null;
+      img.onerror = null;
+      img.src = "";
+      no(new Error("timeout"));
+    }, ms);
+
+    img.onload = () => {
+      clearTimeout(timer);
+      if (img.naturalWidth < 5) { no(new Error("tiny")); return; }
+      ok(img);
+    };
+
+    img.onerror = () => {
+      clearTimeout(timer);
+      no(new Error("error"));
+    };
+
     img.src = url;
   });
 }
 
-async function fetchAvatar(u) {
-  for (const url of [avUrl(u), `https://unavatar.io/${encodeURIComponent(u)}`]) {
-    try { return await loadImg(url, 7000); } catch { /* next */ }
+async function fetchAvatar(username) {
+  for (let i = 0; i < AVATAR_SERVICES.length; i++) {
+    try {
+      const img = await loadImg(AVATAR_SERVICES[i](username), 10000);
+      return img;
+    } catch (e) {
+      // silently try next service
+    }
   }
   return null;
 }
@@ -849,7 +872,7 @@ async function loadParticipants(usernames) {
     barEl.style.width = ((i+1)/usernames.length*100)+"%";
     statusEl.textContent =
       `⏳ ${i+1}/${usernames.length} — ✓${ok} photos, ✗${fail} fallback`;
-    await new Promise(r => setTimeout(r, 100));
+    await new Promise(r => setTimeout(r, 200));
   }
 
   btn.disabled = false;
