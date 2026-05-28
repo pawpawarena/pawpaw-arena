@@ -565,21 +565,36 @@ class Circle{
     grad.addColorStop(0,this.rn);grad.addColorStop(1,this.cl);
     ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,TAU);ctx.fillStyle=grad;ctx.fill();
     ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,TAU);
-    ctx.strokeStyle=this.rn;ctx.lineWidth=2;ctx.stroke();
+    ctx.strokeStyle="rgba(255,255,255,.25)";ctx.lineWidth=2.5;ctx.stroke();
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r-1,0,TAU);
+    ctx.strokeStyle=this.rn;ctx.lineWidth=1.5;ctx.stroke();
     if(this.r>6){
-      const maxC=Math.max(2,Math.floor(this.r/4));
-      const dn=this.un.length>maxC?this.un.slice(0,maxC):this.un;
-      const fs=Math.max(5,Math.min(this.r*.45,16));
-      ctx.fillStyle="rgba(255,255,255,.95)";
-      ctx.font=`bold ${fs}px Fredoka,sans-serif`;
+      const alive=document.getElementById("s-alive");
+      const aliveCount=alive?parseInt(alive.textContent)||999:999;
+      let displayName;
+      let fontSize;
+      if(aliveCount<=10){
+        displayName=this.un;
+        fontSize=Math.max(8,Math.min(this.r*.3,20));
+      }else if(aliveCount<=30){
+        const maxC=Math.max(4,Math.floor(this.r/3));
+        displayName=this.un.length>maxC?this.un.slice(0,maxC):this.un;
+        fontSize=Math.max(6,Math.min(this.r*.4,18));
+      }else{
+        const maxC=Math.max(3,Math.floor(this.r/3.5));
+        displayName=this.un.length>maxC?this.un.slice(0,maxC):this.un;
+        fontSize=Math.max(5,Math.min(this.r*.42,16));
+      }
+      ctx.fillStyle="#ffffff";
+      ctx.font=`bold ${fontSize}px Fredoka,sans-serif`;
       ctx.textAlign="center";ctx.textBaseline="middle";
-      ctx.fillText(dn,this.x,this.y);
+      ctx.fillText(displayName,this.x,this.y);
     }
-    if(this.r>25){
-      ctx.fillStyle="rgba(180,165,149,.85)";
-      ctx.font=`700 ${Math.max(7,this.r*.18)}px Nunito`;
+    if(this.r>22){
+      ctx.fillStyle="rgba(220,210,198,.9)";
+      ctx.font=`bold ${Math.max(8,this.r*.2)}px Nunito`;
       ctx.textAlign="center";ctx.textBaseline="top";
-      ctx.fillText("@"+this.un,this.x,this.y+this.r+3);
+      ctx.fillText("@"+this.un,this.x,this.y+this.r+4);
     }
   }
   hits(o){return dist(this,o)<(this.r+o.r)}
